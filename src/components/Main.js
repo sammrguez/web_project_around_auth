@@ -1,5 +1,6 @@
 import addIcon from "../images/add_button.svg";
 import editIcon from "../images/edit_button.png";
+import PopupWithForm from "./PopupWithForm";
 
 function Main() {
   function handleEditAvatarClick() {
@@ -55,9 +56,58 @@ function Main() {
       </section>
 
       <section className="card-container"></section>
+      <template id="card-template">
+        <div className="place-card">
+          <img className="place-card__photo" src=" " alt=" " />
+
+          <button className="trash-button"></button>
+
+          <div className="place-card__info-container">
+            <h3 className="place-card__name"></h3>
+
+            <button className="like-button">
+              <span className="like-button-counter"></span>
+            </button>
+          </div>
+        </div>
+      </template>
 
       <section className="popups">
-        <div className="popup popup_type_edit-profile">
+        <PopupWithForm
+          name="edit-profile"
+          id="profile"
+          header="Editar Perfil"
+          submitButton="edit"
+          buttonText="actualizar"
+        >
+          <input
+            type="text"
+            className="form__input"
+            placeholder="Nombre"
+            id="name-input"
+            name="name"
+            required
+            minLength="2"
+            maxLength="30"
+          />
+
+          <span className="form__input-error name-input-error"></span>
+
+          <input
+            type="text"
+            className="form__input"
+            placeholder="Acerca de mi"
+            id="about-me-input"
+            name="about-me"
+            required
+            minLength="2"
+            maxLength="20"
+          />
+
+          <span className="form__input-error about-me-input-error"></span>
+        </PopupWithForm>
+
+        {/* /* <div className="popup popup_type_edit-profile">
           <div className="overlay"></div>
 
           <form className="form" id="profile" noValidate name="profile">
@@ -102,25 +152,43 @@ function Main() {
               </fieldset>
             </div>
           </form>
-        </div>
+        </div> 
+         */}
+        <PopupWithForm
+          name="new-place"
+          id="place"
+          header="Nuevo Lugar"
+          submitButton="place"
+          buttonText="crear"
+        >
+          <input
+            type="text"
+            className="form__input"
+            placeholder="Título"
+            id="place-name-input"
+            name="placeName"
+            minLength="4"
+            maxLength="30"
+            required
+          />
 
-        <div className="popup popup_type_new-place">
+          <span className="form__input-error place-name-input-error"></span>
+
+          <input
+            type="url"
+            className="form__input"
+            placeholder="Enlace a la Imagen"
+            id="photo-link-input"
+            name="link"
+            required
+            minLength="4"
+          />
+
+          <span className="form__input-error photo-link-input-error"></span>
+        </PopupWithForm>
+        {/* <div className="popup popup_type_new-place">
           <div className="overlay"></div>
-          <template id="card-template">
-            <div className="place-card">
-              <img className="place-card__photo" src=" " alt=" " />
 
-              <button className="trash-button"></button>
-
-              <div className="place-card__info-container">
-                <h3 className="place-card__name"></h3>
-
-                <button className="like-button">
-                  <span className="like-button-counter"></span>
-                </button>
-              </div>
-            </div>
-          </template>
           <form className="form" id="place" noValidate name="place">
             <button className="form__close-button form__close-button_type_new-place"></button>
 
@@ -163,7 +231,8 @@ function Main() {
               </fieldset>
             </div>
           </form>
-        </div>
+        </div> */}
+
         <div className="popup popup_type_delete">
           <div class="overlay"></div>
 
@@ -190,7 +259,26 @@ function Main() {
             </div>
           </div>
         </div>
-        <div className="popup popup_type_update-avatar">
+        <PopupWithForm
+          name="update-avatar"
+          id="avatar"
+          header="Editar foto de perfil"
+          submitButton="avatar"
+          buttonText="guardar"
+        >
+          <input
+            type="url"
+            className="form__input"
+            placeholder="Link de foto"
+            id="avatar-input"
+            name="updateAvatar"
+            required
+            minLength="4"
+          />
+
+          <span className="form__input-error avatar-input-error"></span>
+        </PopupWithForm>
+        {/* <div className="popup popup_type_update-avatar">
           <div className="overlay"></div>
 
           <form
@@ -227,7 +315,7 @@ function Main() {
               </fieldset>
             </div>
           </form>
-        </div>
+        </div> */}
         <div className="popup popup_type_photo">
           <div className="popup__photo-container">
             <button className="popup__close-button"></button>
