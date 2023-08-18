@@ -1,6 +1,8 @@
 function PopupWithForm(props) {
+  const [isOpen, setIsOpen] = React.useState(true);
+
   return (
-    <div className={`popup popup_type_${props.name}`}>
+    <div className={`popup popup_type_${props.name} ${isOpen} && popup_opened`}>
       <div className="overlay"></div>
       <form className="form" id={props.id} noValidate name={props.name}>
         <button className="form__close-button"></button>

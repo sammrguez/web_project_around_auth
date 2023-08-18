@@ -11,23 +11,24 @@ function App() {
     React.useState(false);
 
   function handleEditAvatarClick() {
-    setIsEditProfilePopupOpen(!isEditProfilePopupOpen);
+    setIsEditAvatarPopupOpen(true);
   }
   function handleEditProfileClick() {
-    document
-      .querySelector(".popup_type_edit-profile")
-      .classList.add("popup_opened");
+    setIsEditProfilePopupOpen(true);
   }
   function handleAddPlaceClick() {
-    document
-      .querySelector(".popup_type_new-place")
-      .classList.add("popup_opened");
+    setIsAddPlacePopupOpen(true);
   }
   return (
     <body class="root">
       <div class="page">
         <Header />
-        <Main />
+        <Main
+          handleEditAvatarClick={handleEditAvatarClick}
+          handleEditProfileClick={handleEditProfileClick}
+          handleAddPlaceClick={handleAddPlaceClick}
+          handleCardClick={handleCardClick}
+        />
         <Footer />
       </div>
     </body>

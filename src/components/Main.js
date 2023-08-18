@@ -1,15 +1,16 @@
 import addIcon from "../images/add_button.svg";
 import editIcon from "../images/edit_button.png";
 import PopupWithForm from "./PopupWithForm";
+import PopupWithImage from "./PpupWithImage";
 
-function Main() {
+function Main(props) {
   //visual//
   return (
     <main className="content">
       <section className="profile">
         <div
           className="profile__avatar-overlay"
-          onClick={handleEditAvatarClick}
+          onEditAvatarClick={props.handleEditAvatarClick}
         ></div>
         <img
           className="profile__avatar"
@@ -23,7 +24,7 @@ function Main() {
               className="edit-button__icon"
               src={editIcon}
               alt="ícono de editar"
-              onClick={handleEditProfileClick}
+              onEditProfileClick={props.handleEditProfileClick}
             />
           </div>
           <h1 className="profile__user-name"></h1>
@@ -34,7 +35,7 @@ function Main() {
             className="add-button__icon"
             src={addIcon}
             alt="ícono de agregar"
-            onClick={handleAddPlaceClick}
+            onAddPlaceClick={props.handleAddPlaceClick}
           />
         </div>
       </section>
@@ -42,7 +43,12 @@ function Main() {
       <section className="card-container"></section>
       <template id="card-template">
         <div className="place-card">
-          <img className="place-card__photo" src=" " alt=" " />
+          <img
+            className="place-card__photo"
+            src=" "
+            alt=" "
+            onCardClick={props.handleCardClick}
+          />
 
           <button className="trash-button"></button>
 
@@ -300,15 +306,7 @@ function Main() {
             </div>
           </form>
         </div> */}
-        <div className="popup popup_type_photo">
-          <div className="popup__photo-container">
-            <button className="popup__close-button"></button>
-
-            <img className="popup__photo" src=" " />
-
-            <h4 className="popup__photo-caption"></h4>
-          </div>
-        </div>
+        <PopupWithImage name="photo" />
       </section>
     </main>
   );
