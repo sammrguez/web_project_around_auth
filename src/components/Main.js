@@ -3,22 +3,6 @@ import editIcon from "../images/edit_button.png";
 import PopupWithForm from "./PopupWithForm";
 
 function Main() {
-  function handleEditAvatarClick() {
-    document
-      .querySelector(".popup_type_update-avatar")
-      .classList.add("popup_opened");
-  }
-  function handleEditProfileClick() {
-    document
-      .querySelector(".popup_type_edit-profile")
-      .classList.add("popup_opened");
-  }
-  function handleAddPlaceClick() {
-    document
-      .querySelector(".popup_type_new-place")
-      .classList.add("popup_opened");
-  }
-
   //visual//
   return (
     <main className="content">
