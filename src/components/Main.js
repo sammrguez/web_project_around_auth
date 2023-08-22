@@ -1,7 +1,7 @@
 import addIcon from "../images/add_button.svg";
 import editIcon from "../images/edit_button.png";
 import PopupWithForm from "./PopupWithForm";
-import PopupWithImage from "./PpupWithImage";
+import PopupWithImage from "./PopupWithImage";
 
 function Main(props) {
   //visual//
@@ -10,7 +10,7 @@ function Main(props) {
       <section className="profile">
         <div
           className="profile__avatar-overlay"
-          onEditAvatarClick={props.handleEditAvatarClick}
+          onClick={props.onEditAvatarClick}
         ></div>
         <img
           className="profile__avatar"
@@ -24,7 +24,7 @@ function Main(props) {
               className="edit-button__icon"
               src={editIcon}
               alt="ícono de editar"
-              onEditProfileClick={props.handleEditProfileClick}
+              onClick={props.onEditProfileClick}
             />
           </div>
           <h1 className="profile__user-name"></h1>
@@ -35,7 +35,7 @@ function Main(props) {
             className="add-button__icon"
             src={addIcon}
             alt="ícono de agregar"
-            onAddPlaceClick={props.handleAddPlaceClick}
+            onClick={props.onAddPlaceClick}
           />
         </div>
       </section>
@@ -47,7 +47,7 @@ function Main(props) {
             className="place-card__photo"
             src=" "
             alt=" "
-            onCardClick={props.handleCardClick}
+            onClick={props.onCardClick}
           />
 
           <button className="trash-button"></button>
@@ -69,6 +69,7 @@ function Main(props) {
           header="Editar Perfil"
           submitButton="edit"
           buttonText="actualizar"
+          isOpen={props.isOpen[0]}
         >
           <input
             type="text"
@@ -97,59 +98,13 @@ function Main(props) {
           <span className="form__input-error about-me-input-error"></span>
         </PopupWithForm>
 
-        {/* /* <div className="popup popup_type_edit-profile">
-          <div className="overlay"></div>
-
-          <form className="form" id="profile" noValidate name="profile">
-            <button className="form__close-button"></button>
-
-            <div className="form__container">
-              <h3 className="form__header">Editar Perfil</h3>
-
-              <fieldset className="form__input-container">
-                <input
-                  type="text"
-                  className="form__input"
-                  placeholder="Nombre"
-                  id="name-input"
-                  name="name"
-                  required
-                  minLength="2"
-                  maxLength="30"
-                />
-
-                <span className="form__input-error name-input-error"></span>
-
-                <input
-                  type="text"
-                  className="form__input"
-                  placeholder="Acerca de mi"
-                  id="about-me-input"
-                  name="about-me"
-                  required
-                  minLength="2"
-                  maxLength="20"
-                />
-
-                <span className="form__input-error about-me-input-error"></span>
-
-                <button
-                  className="form__submit-button form__submit-button_edit"
-                  type="submit"
-                >
-                  Crear
-                </button>
-              </fieldset>
-            </div>
-          </form>
-        </div> 
-         */}
         <PopupWithForm
           name="new-place"
           id="place"
           header="Nuevo Lugar"
           submitButton="place"
           buttonText="crear"
+          isOpen={props.isOpen[1]}
         >
           <input
             type="text"
@@ -176,55 +131,9 @@ function Main(props) {
 
           <span className="form__input-error photo-link-input-error"></span>
         </PopupWithForm>
-        {/* <div className="popup popup_type_new-place">
-          <div className="overlay"></div>
-
-          <form className="form" id="place" noValidate name="place">
-            <button className="form__close-button form__close-button_type_new-place"></button>
-
-            <div className="form__container">
-              <h3 className="form__header">Nuevo Lugar</h3>
-
-              <fieldset className="form__input-container">
-                <input
-                  type="text"
-                  className="form__input"
-                  placeholder="Título"
-                  id="place-name-input"
-                  name="placeName"
-                  minLength="4"
-                  maxLength="30"
-                  required
-                />
-
-                <span className="form__input-error place-name-input-error"></span>
-
-                <input
-                  type="url"
-                  className="form__input"
-                  placeholder="Enlace a la Imagen"
-                  id="photo-link-input"
-                  name="link"
-                  required
-                  minLength="4"
-                />
-
-                <span className="form__input-error photo-link-input-error"></span>
-
-                <button
-                  type="submit"
-                  className="form__submit-button form__submit-button_place"
-                  id="new-place"
-                >
-                  Crear
-                </button>
-              </fieldset>
-            </div>
-          </form>
-        </div> */}
 
         <div className="popup popup_type_delete">
-          <div class="overlay"></div>
+          <div className="overlay"></div>
 
           <div
             className="form form_action_delete"
@@ -255,6 +164,7 @@ function Main(props) {
           header="Editar foto de perfil"
           submitButton="avatar"
           buttonText="guardar"
+          isOpen={props.isOpen[2]}
         >
           <input
             type="url"
@@ -268,45 +178,8 @@ function Main(props) {
 
           <span className="form__input-error avatar-input-error"></span>
         </PopupWithForm>
-        {/* <div className="popup popup_type_update-avatar">
-          <div className="overlay"></div>
 
-          <form
-            className="form form_action_avatar"
-            id="avatar"
-            noValidate
-            name="avatar"
-          >
-            <button className="form__close-button form__close-button_type_new-place"></button>
-
-            <div className="form__container">
-              <h3 className="form__header">Editar foto de perfil</h3>
-
-              <fieldset className="form__input-container">
-                <input
-                  type="url"
-                  className="form__input"
-                  placeholder="Link de foto"
-                  id="avatar-input"
-                  name="updateAvatar"
-                  required
-                  minLength="4"
-                />
-
-                <span className="form__input-error avatar-input-error"></span>
-
-                <button
-                  type="submit"
-                  className="form__submit-button form__submit-button_avatar"
-                  id="updateAvatar"
-                >
-                  Guardar
-                </button>
-              </fieldset>
-            </div>
-          </form>
-        </div> */}
-        <PopupWithImage name="photo" />
+        <PopupWithImage name="photo" isOpen={props.isOpen[3]} />
       </section>
     </main>
   );

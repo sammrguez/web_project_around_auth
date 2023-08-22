@@ -1,6 +1,9 @@
 function PopupWithImage(props) {
+  const className = `popup popup_type_${props.name} ${
+    props.isOpen ? "popup_opened" : ""
+  }`;
   return (
-    <div className={`popup popup_type_${props.name}`}>
+    <div className={className}>
       <div className="popup__photo-container">
         <button className="popup__close-button"></button>
 
