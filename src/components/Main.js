@@ -1,3 +1,4 @@
+import React from "react";
 import addIcon from "../images/add_button.svg";
 import editIcon from "../images/edit_button.png";
 import PopupWithForm from "./PopupWithForm";
@@ -70,6 +71,7 @@ function Main(props) {
           submitButton="edit"
           buttonText="actualizar"
           isOpen={props.isOpen[0]}
+          onClose={props.onClose}
         >
           <input
             type="text"
@@ -105,6 +107,7 @@ function Main(props) {
           submitButton="place"
           buttonText="crear"
           isOpen={props.isOpen[1]}
+          onClose={props.onClose}
         >
           <input
             type="text"
@@ -165,6 +168,7 @@ function Main(props) {
           submitButton="avatar"
           buttonText="guardar"
           isOpen={props.isOpen[2]}
+          onClose={props.onClose}
         >
           <input
             type="url"
@@ -179,7 +183,11 @@ function Main(props) {
           <span className="form__input-error avatar-input-error"></span>
         </PopupWithForm>
 
-        <PopupWithImage name="photo" isOpen={props.isOpen[3]} />
+        <PopupWithImage
+          name="photo"
+          isOpen={props.isOpen[3]}
+          onClose={props.onClose}
+        />
       </section>
     </main>
   );

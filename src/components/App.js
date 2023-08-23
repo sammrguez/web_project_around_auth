@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../index.css";
 import Header from "./Header";
 import Main from "./Main";
@@ -24,21 +24,27 @@ function App() {
   function handleCardClick() {
     setIsCardPopupOpen(true);
   }
-
+  function closeAllPopups() {
+    setIsEditProfilePopupOpen(false);
+    setIsEditAvatarPopupOpen(false);
+    setIsAddPlacePopupOpen(false);
+    setIsCardPopupOpen(false);
+  }
   return (
     <>
       <Header />
       <Main
         onEditAvatarClick={() => handleEditAvatarClick()}
+        onEditProfileClick={() => handleEditProfileClick()}
+        onAddPlaceClick={() => handleAddPlaceClick()}
+        onCardClick={() => handleCardClick()}
         isOpen={[
           isEditProfilePopupOpen,
           isAddPlacePopupOpen,
           isEditAvatarPopupOpen,
           isCardPopupOpen,
         ]}
-        onEditProfileClick={() => handleEditProfileClick()}
-        onAddPlaceClick={() => handleAddPlaceClick()}
-        onCardClick={() => handleCardClick()}
+        onClose={() => closeAllPopups()}
       ></Main>
       <Footer />
     </>

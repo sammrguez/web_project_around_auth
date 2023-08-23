@@ -8,7 +8,11 @@ function PopupWithForm(props) {
     <div className={className}>
       <div className="overlay"></div>
       <form className="form" id={props.id} noValidate name={props.name}>
-        <button className="form__close-button"></button>
+        <button
+          className="form__close-button"
+          onClick={props.onClose}
+          type="button"
+        ></button>
 
         <div className="form__container">
           <h3 className="form__header">{props.header}</h3>

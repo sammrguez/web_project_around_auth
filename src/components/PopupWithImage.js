@@ -5,7 +5,10 @@ function PopupWithImage(props) {
   return (
     <div className={className}>
       <div className="popup__photo-container">
-        <button className="popup__close-button"></button>
+        <button
+          className="popup__close-button"
+          onClick={props.onClose}
+        ></button>
 
         <img className="popup__photo" src=" " />
 
