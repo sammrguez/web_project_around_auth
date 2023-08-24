@@ -1,11 +1,11 @@
 import React from "react";
 function PopupWithForm(props) {
-  const className = `popup popup_type_${props.name} ${
-    props.isOpen ? "popup_opened" : ""
-  }`;
-
   return (
-    <div className={className}>
+    <div
+      className={`popup popup_type_${props.name} ${
+        props.isOpen ? "popup_opened" : ""
+      }`}
+    >
       <div className="overlay"></div>
       <form className="form" id={props.id} noValidate name={props.name}>
         <button
