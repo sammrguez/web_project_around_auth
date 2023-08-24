@@ -1,10 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import addIcon from "../images/add_button.svg";
 import editIcon from "../images/edit_button.png";
 import PopupWithForm from "./PopupWithForm";
 import PopupWithImage from "./PopupWithImage";
-
+import api from "../utils/api";
+import Card from "./Card";
 function Main(props) {
+  const [userName, setUserName] = useState();
+  const [userDescrprion, setUserDescription] = useState();
+  const [userAvatar, setUserAvatar] = useState();
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    api.defaultProfile().then((res) => {
+      setUserName(res.name);
+      setUserDescription(res.about);
+      setUserAvatar(res.avatar);
+    });
+  });
+
+  useEffect(() => {
+    api.cardsAddedRequest().then((res) => {
+      setCards(res);
+    });
+  }, []);
+  console.log(cards);
+  //test
+
   //visual//
   return (
     <main className="content">
@@ -15,7 +37,7 @@ function Main(props) {
         ></div>
         <img
           className="profile__avatar"
-          src=" "
+          src={userAvatar}
           alt="aquí está tu foto de perfil"
         />
 
@@ -28,8 +50,8 @@ function Main(props) {
               onClick={props.onEditProfileClick}
             />
           </div>
-          <h1 className="profile__user-name"></h1>
-          <h2 className="profile__user-profession"></h2>
+          <h1 className="profile__user-name">{userName}</h1>
+          <h2 className="profile__user-profession">{userDescrprion} </h2>
         </div>
         <div className="add-button">
           <img
@@ -41,27 +63,56 @@ function Main(props) {
         </div>
       </section>
 
-      <section className="card-container"></section>
-      <template id="card-template">
-        <div className="place-card">
-          <img
-            className="place-card__photo"
-            src=" "
-            alt=" "
-            onClick={props.onCardClick}
-          />
+      <section className="cards">
+        <ul class="card-container">
+          <Card
+            card={cards.map((card, i) => (
+              <li className="place-card" key={i}>
+                <img
+                  className="place-card__photo"
+                  src={card.link}
+                  alt={card.name}
+                  onClick={props.onCardClick}
+                />
 
-          <button className="trash-button"></button>
+                <button className="trash-button"></button>
 
-          <div className="place-card__info-container">
-            <h3 className="place-card__name"></h3>
+                <div className="place-card__info-container">
+                  <h3 className="place-card__name">{card.name} </h3>
 
-            <button className="like-button">
-              <span className="like-button-counter"></span>
-            </button>
-          </div>
-        </div>
-      </template>
+                  <button className="like-button">
+                    <span className="like-button-counter">
+                      {card.likes.length}{" "}
+                    </span>
+                  </button>
+                </div>
+              </li>
+            ))}
+          ></Card>
+          {/* {cards.map((card, i) => (
+            <li className="place-card" key={i}>
+              <img
+                className="place-card__photo"
+                src={card.link}
+                alt=" "
+                onClick={props.onCardClick}
+              />
+
+              <button className="trash-button"></button>
+
+              <div className="place-card__info-container">
+                <h3 className="place-card__name">{card.name} </h3>
+
+                <button className="like-button">
+                  <span className="like-button-counter">
+                    {card.likes.lengt}
+                  </span>
+                </button>
+              </div>
+            </li>
+          ))} */}
+        </ul>
+      </section>
 
       <section className="popups">
         <PopupWithForm
