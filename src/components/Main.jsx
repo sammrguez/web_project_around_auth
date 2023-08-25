@@ -128,7 +128,7 @@ function Main({
         <span className="form__input-error photo-link-input-error"></span>
       </PopupWithForm>
 
-      <div className="popup popup_type_delete">
+      {/* <div className="popup popup_type_delete">
         <div className="overlay"></div>
 
         <div className="form form_action_delete" id="deleteForm" name="delete">
@@ -149,7 +149,7 @@ function Main({
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
       <PopupWithForm
         name="update-avatar"
         id="avatar"

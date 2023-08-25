@@ -27,7 +27,7 @@ function App() {
     setIsEditProfilePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
     setIsAddPlacePopupOpen(false);
-    setSelectedCard(true);
+    setSelectedCard(false);
   }
 
   return (
@@ -45,7 +45,6 @@ function App() {
           isEditAvatarPopupOpen,
         ]}
         onClose={() => closeAllPopups()}
-        se
       ></Main>
       <Footer />
     </>
