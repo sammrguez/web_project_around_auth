@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-
 import PopupWithForm from "./PopupWithForm";
-import PopupWithImage from "./PopupWithImage";
 import api from "../utils/api";
 import PopupConfirmation from "./PopupConfirmation";
 import Profile from "./Profile";
 import CardContainer from "./CardContainer";
+import ImagePopup from "./ImagePopup";
 
 function Main({
   onEditProfileClick,
@@ -149,11 +148,7 @@ function Main({
         <span className="form__input-error avatar-input-error"></span>
       </PopupWithForm>
 
-      <PopupWithImage
-        name="photo"
-        onClose={onClose}
-        selectedCard={selectedCard}
-      />
+      <ImagePopup name="photo" onClose={onClose} selectedCard={selectedCard} />
       <PopupConfirmation />
     </main>
   );

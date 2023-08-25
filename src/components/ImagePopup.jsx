@@ -1,4 +1,4 @@
-function PopupWithImage({ name, selectedCard, onClose }) {
+function ImagePopup({ name, selectedCard, onClose }) {
   return (
     <>
       <div
@@ -28,4 +28,4 @@ function PopupWithImage({ name, selectedCard, onClose }) {
   );
 }
 
-export default PopupWithImage;
+export default ImagePopup;
