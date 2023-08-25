@@ -5,26 +5,24 @@ function Card({ name, link, likes, onCardClick }) {
     onCardClick({ name, link });
   };
   return (
-    <>
-      <div className="place-card">
-        <img
-          className="place-card__photo"
-          src={link}
-          alt={name}
-          onClick={handleClick}
-        />
+    <div className="place-card">
+      <img
+        className="place-card__photo"
+        src={link}
+        alt={name}
+        onClick={handleClick}
+      />
 
-        <button className="trash-button"></button>
+      <button className="trash-button"></button>
 
-        <div className="place-card__info-container">
-          <h3 className="place-card__name">{name} </h3>
+      <div className="place-card__info-container">
+        <h3 className="place-card__name">{name} </h3>
 
-          <button className="like-button">
-            <span className="like-button-counter">{likes}</span>
-          </button>
-        </div>
+        <button className="like-button">
+          <span className="like-button-counter">{likes}</span>
+        </button>
       </div>
-    </>
+    </div>
   );
 }
 
