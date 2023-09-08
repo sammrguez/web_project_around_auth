@@ -3,6 +3,7 @@ class Api {
     this._baseUrl = baseUrl;
     this._headers = headers;
     this._authorization = headers.authorization;
+    this._cardId = "64f77814e5aaa3082e748197";
   }
 
   getUserInfo() {
@@ -23,7 +24,7 @@ class Api {
       });
   }
   cardsAddedRequest() {
-    return fetch(`${this._baseUrl}/cards`, {
+    return fetch(`${this._baseUrl}cards`, {
       headers: {
         authorization: this._authorization,
       },
@@ -33,6 +34,27 @@ class Api {
           return res.json();
         }
         return Promise.reject(res.status);
+      })
+      .catch((error) => {
+        console.log(`Error: ${error}`);
+      });
+  }
+
+  changeLikeCardStatus() {
+    return fetch(`${this._baseUrl}cards/${this._cardId}`, {
+      method: "GET",
+      headers: {
+        authorization: this._authorization,
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(res.status);
+      })
+      .then((res) => {
+        console.log(res);
       })
       .catch((error) => {
         console.log(`Error: ${error}`);

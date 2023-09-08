@@ -1,17 +1,19 @@
-import React from "react";
+import { React, useContext } from "react";
 import Card from "./Card";
-function CardContainer({ cards, onCardClick }) {
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
+
+function CardContainer({ cards, onCardClick, onCardLike }) {
+  const currentUser = useContext(CurrentUserContext);
+
   return (
     <section className="card-container">
       {cards.map((card) => {
         return (
           <Card
-            likes={card.likes}
-            name={card.name}
             key={card._id}
-            link={card.link}
+            card={card}
             onCardClick={() => onCardClick(card)}
-            owner={card.owner}
+            onCardLike={() => onCardLike(card)}
           />
         );
       })}

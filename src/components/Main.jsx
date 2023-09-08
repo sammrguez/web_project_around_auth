@@ -21,6 +21,16 @@ function Main({
   const currentUser = useContext(CurrentUserContext);
   const [cards, setCards] = useState([]);
 
+  function handleCardLike(card) {
+    console.log(card._id);
+    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    console.log(isLiked);
+    api.changeLikeCardStatus();
+    // api.changeLikeCardStatus(card._id).then((newCard) => {
+    //   setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
+    // });
+  }
+
   useEffect(() => {
     api
       .cardsAddedRequest()
@@ -44,7 +54,11 @@ function Main({
         onAddPlaceClick={onAddPlaceClick}
       />
 
-      <CardContainer cards={cards} onCardClick={onCardClick} />
+      <CardContainer
+        onCardLike={handleCardLike}
+        cards={cards}
+        onCardClick={onCardClick}
+      />
 
       <PopupWithForm
         name="edit-profile"
