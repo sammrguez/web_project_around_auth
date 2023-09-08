@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import PopupWithForm from "./PopupWithForm";
 
@@ -7,6 +7,7 @@ import PopupConfirmation from "./PopupConfirmation";
 import Profile from "./Profile";
 import CardContainer from "./CardContainer";
 import ImagePopup from "./ImagePopup";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function Main({
   onEditProfileClick,
@@ -17,23 +18,10 @@ function Main({
   onCardClick,
   selectedCard,
 }) {
-  const [userName, setUserName] = useState();
-  const [userDescrprion, setUserDescription] = useState();
-  const [userAvatar, setUserAvatar] = useState();
+  const currentUser = useContext(CurrentUserContext);
   const [cards, setCards] = useState([]);
-
+  console.log(currentUser.name);
   useEffect(() => {
-    api
-      .defaultProfile()
-      .then((res) => {
-        setUserName(res.name);
-        setUserDescription(res.about);
-        setUserAvatar(res.avatar);
-      })
-      .catch((error) => {
-        console.log(`Error: ${error}`);
-      });
-
     api
       .cardsAddedRequest()
       .then((data) => {
@@ -49,10 +37,10 @@ function Main({
     <main className="content">
       <Profile
         onEditAvatarClick={onEditAvatarClick}
-        userAvatar={userAvatar}
+        userAvatar={currentUser.avatar}
         onEditProfileClick={onEditProfileClick}
-        userName={userName}
-        userDescrprion={userDescrprion}
+        userName={currentUser.name}
+        userDescrprion={currentUser.descrprion}
         onAddPlaceClick={onAddPlaceClick}
       />
 

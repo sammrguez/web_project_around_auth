@@ -11,6 +11,7 @@ function CardContainer({ cards, onCardClick }) {
             key={card._id}
             link={card.link}
             onCardClick={() => onCardClick(card)}
+            owner={card.owner}
           />
         );
       })}

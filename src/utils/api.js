@@ -4,11 +4,8 @@ class Api {
     this._headers = headers;
     this._authorization = headers.authorization;
   }
-  // Profile API
 
-  // termina profile functions
-
-  defaultProfile() {
+  getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: {
         authorization: this._authorization,

@@ -14,3 +14,10 @@
   background: url(/src/images/Trash_hover.svg) center no-repeat;
   cursor: pointer;
 }
+
+.trash-button_visible {
+  visibility: visible;
+}
+.trash-button_hidden {
+  visibility: hidden;
+}
