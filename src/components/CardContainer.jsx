@@ -6,7 +6,7 @@ function CardContainer({ cards, onCardClick }) {
       {cards.map((card) => {
         return (
           <Card
-            likes={card.likes.length}
+            likes={card.likes}
             name={card.name}
             key={card._id}
             link={card.link}

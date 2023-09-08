@@ -20,7 +20,7 @@ function Main({
 }) {
   const currentUser = useContext(CurrentUserContext);
   const [cards, setCards] = useState([]);
-  console.log(currentUser.name);
+
   useEffect(() => {
     api
       .cardsAddedRequest()

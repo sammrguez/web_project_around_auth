@@ -17,7 +17,7 @@ function App() {
       setCurrentUser(res);
     });
   }, []);
-  //  console.log({ currentUser });
+
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
   }
