@@ -21,16 +21,6 @@ function Main({
   const currentUser = useContext(CurrentUserContext);
   const [cards, setCards] = useState([]);
 
-  function handleCardLike(card) {
-    console.log(card._id);
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
-    console.log(isLiked);
-    api.changeLikeCardStatus();
-    // api.changeLikeCardStatus(card._id).then((newCard) => {
-    //   setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
-    // });
-  }
-
   useEffect(() => {
     api
       .cardsAddedRequest()
@@ -41,6 +31,16 @@ function Main({
         console.log(`Error: ${error}`);
       });
   }, []);
+
+  function handleCardLike(card) {
+    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    api.changeLikeCardStatus(card._id, isLiked).then((newCard) => {
+      setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
+    });
+  }
+  function handleCardDelete(card) {
+    console.log(card._id);
+  }
 
   //visual//
   return (

@@ -2,27 +2,26 @@ import { React, useContext } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function Card({ card, onCardClick, onCardLike }) {
+  const handleClick = () => {
+    onCardClick(card.name, card.link);
+  };
+
+  const handleLikeClick = () => {
+    onCardLike(card);
+  };
+
   const currentUser = useContext(CurrentUserContext);
 
-  const isOwn = card.owner._id === currentUser._id;
+  const isOwn = card.owner._id === currentUser?._id;
   const cardDeleteButtonClassName = `trash-button ${
     isOwn ? "trash-button_visible" : "trash-button_hidden"
   }`;
   const isLiked = card.likes.some((i) => i._id === currentUser._id);
 
-  const cardLikeButtonClassName = `like-button ${
-    isLiked ? ".like-button_active" : ""
+  const cardLikeButtonClassName = `like-button  ${
+    isLiked ? "like-button_active" : ""
   }`;
-  const handleClick = () => {
-    onCardClick(card.name, card.link);
 
-    // api.changeLikeCardStatus(card._id).then((res) => {
-    //   console.log(res);
-    // });
-  };
-  const handleLikeClick = () => {
-    onCardLike(card);
-  };
   return (
     <div className="place-card">
       <img
