@@ -39,7 +39,9 @@ function Main({
     });
   }
   function handleCardDelete(card) {
-    console.log(card._id);
+    api.deleteCard(card._id).then((res) => {
+      setCards((state) => state.filter((c) => c._id !== card._id));
+    });
   }
 
   //visual//
@@ -58,6 +60,7 @@ function Main({
         onCardLike={handleCardLike}
         cards={cards}
         onCardClick={onCardClick}
+        onCardDelete={handleCardDelete}
       />
 
       <PopupWithForm

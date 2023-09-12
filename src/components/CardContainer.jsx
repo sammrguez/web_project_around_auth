@@ -2,7 +2,7 @@ import { React, useContext } from "react";
 import Card from "./Card";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-function CardContainer({ cards, onCardClick, onCardLike }) {
+function CardContainer({ cards, onCardClick, onCardLike, onCardDelete }) {
   const currentUser = useContext(CurrentUserContext);
 
   return (
@@ -14,6 +14,7 @@ function CardContainer({ cards, onCardClick, onCardLike }) {
             card={card}
             onCardClick={() => onCardClick(card)}
             onCardLike={() => onCardLike(card)}
+            onCardDelete={() => onCardDelete(card)}
           />
         );
       })}

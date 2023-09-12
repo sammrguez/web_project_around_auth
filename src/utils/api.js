@@ -85,6 +85,25 @@ class Api {
         });
     }
   }
+  deleteCard(cardId) {
+    return fetch(`${this._address}/${this._groupId}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: {
+        authorization: this._token,
+        "content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(res.status);
+      })
+
+      .catch((error) => {
+        console.log(`Error: ${error}`);
+      });
+  }
 }
 
 // const api = new Api({
