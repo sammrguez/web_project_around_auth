@@ -1,24 +1,15 @@
 import React, { useState, useContext, useEffect } from "react";
 import PopupWithForm from "./PopupWithForm";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const currentUser = useContext(CurrentUserContext);
-  useEffect(() => {
-    if (currentUser.name !== undefined) {
-      setName(currentUser.name);
-    }
-    if (currentUser.about !== undefined) {
-      setDescription(currentUser.about);
-    }
-  }, [currentUser]);
 
   function handleChange(evt) {
     switch (evt.target.name) {
       case "name":
         setName(evt.target.value);
+
         break;
 
       case "about-me":
@@ -27,13 +18,14 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
         break;
     }
   }
+
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("aqui se debió enviar el formulario");
-    onUpdateUser = {
+
+    onUpdateUser({
       name: name,
       about: description,
-    };
+    });
   }
 
   return (

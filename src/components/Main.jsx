@@ -8,16 +8,18 @@ import Profile from "./Profile";
 import CardContainer from "./CardContainer";
 import ImagePopup from "./ImagePopup";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import EditProfilePopup from "./EditProfilePopup";
 
 function Main({
   onEditProfileClick,
   onAddPlaceClick,
   onEditAvatarClick,
   onClose,
-  isOpen,
   onCardClick,
   selectedCard,
+  isEditAvatarPopupOpen,
+  isAddPlacePopupOpen,
+  isEditProfilePopupOpen,
+  children,
 }) {
   const currentUser = useContext(CurrentUserContext);
   const [cards, setCards] = useState([]);
@@ -44,9 +46,6 @@ function Main({
       setCards((state) => state.filter((c) => c._id !== card._id));
     });
   }
-  function handleUpdateUser(profile) {
-    api.setUserInfo(profile);
-  }
 
   //visual//
   return (
@@ -67,18 +66,13 @@ function Main({
         onCardDelete={handleCardDelete}
       />
 
-      <EditProfilePopup
-        isOpen={isOpen[0]}
-        onClose={onClose}
-        onUpdateUser={handleUpdateUser}
-      />
       <PopupWithForm
         name="new-place"
         id="place"
         header="Nuevo Lugar"
         submitButton="place"
         buttonText="crear"
-        isOpen={isOpen[1]}
+        isOpen={isAddPlacePopupOpen}
         onClose={onClose}
       >
         <input
@@ -112,7 +106,7 @@ function Main({
         header="Editar foto de perfil"
         submitButton="avatar"
         buttonText="guardar"
-        isOpen={isOpen[2]}
+        isOpen={isEditAvatarPopupOpen}
         onClose={onClose}
       >
         <input
@@ -130,6 +124,7 @@ function Main({
 
       <ImagePopup name="photo" onClose={onClose} selectedCard={selectedCard} />
       <PopupConfirmation />
+      {children}
     </main>
   );
 }

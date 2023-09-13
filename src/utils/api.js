@@ -105,10 +105,10 @@ class Api {
       });
   }
   setUserInfo(profile) {
-    return fetch(`${this._baseUrl}/users/me`, {
+    return fetch(`${this._address}/${this._groupId}/users/me`, {
       method: "PATCH",
       headers: {
-        authorization: this._authorization,
+        authorization: this._token,
         "content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -131,7 +131,7 @@ class Api {
 
 const api = new Api({
   address: "https://around.nomoreparties.co/v1",
-  groupId: `web_es_07/`,
+  groupId: `web_es_07`,
   token: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
 });
 export default api;

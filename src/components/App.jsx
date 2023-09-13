@@ -17,8 +17,10 @@ function App() {
     api.getUserInfo().then((res) => {
       setCurrentUser(res);
     });
-  }, []);
-
+  }, [currentUser]);
+  function handleUpdateUser(profile) {
+    api.setUserInfo(profile).then((res) => {});
+  }
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
   }
@@ -48,13 +50,17 @@ function App() {
         onAddPlaceClick={handleAddPlaceClick}
         onCardClick={handleCardClick}
         selectedCard={selectedCard}
-        isOpen={[
-          isEditProfilePopupOpen,
-          isAddPlacePopupOpen,
-          isEditAvatarPopupOpen,
-        ]}
-        onClose={() => closeAllPopups()}
-      ></Main>
+        isEditAvatarPopupOpen={isEditAvatarPopupOpen}
+        isAddPlacePopupOpen={isAddPlacePopupOpen}
+        isEditProfilePopupOpen={isEditProfilePopupOpen}
+        onClose={closeAllPopups}
+      >
+        <EditProfilePopup
+          isOpen={isEditProfilePopupOpen}
+          onClose={closeAllPopups}
+          onUpdateUser={handleUpdateUser}
+        />
+      </Main>
       <Footer />
     </CurrentUserContext.Provider>
   );
