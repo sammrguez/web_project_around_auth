@@ -5,6 +5,7 @@ import Main from "./Main";
 import Footer from "./Footer";
 import api from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import EditProfilePopup from "./EditProfilePopup";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);

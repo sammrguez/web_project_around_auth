@@ -104,15 +104,30 @@ class Api {
         console.log(`Error: ${error}`);
       });
   }
-}
+  setUserInfo(profile) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: {
+        authorization: this._authorization,
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: profile.name,
+        about: profile.about,
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(res.status);
+      })
 
-// const api = new Api({
-//   baseUrl: "https://around.nomoreparties.co",
-//   headers: {
-//     authorization: "d73ff8a4-5ad7-42cb-999c-d084ca2e6847",
-//     "content-Type": "application/json",
-//   },
-// });
+      .catch((error) => {
+        console.log(`Error: ${error}`);
+      });
+  }
+}
 
 const api = new Api({
   address: "https://around.nomoreparties.co/v1",

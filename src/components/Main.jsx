@@ -8,6 +8,7 @@ import Profile from "./Profile";
 import CardContainer from "./CardContainer";
 import ImagePopup from "./ImagePopup";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import EditProfilePopup from "./EditProfilePopup";
 
 function Main({
   onEditProfileClick,
@@ -43,6 +44,9 @@ function Main({
       setCards((state) => state.filter((c) => c._id !== card._id));
     });
   }
+  function handleUpdateUser(profile) {
+    api.setUserInfo(profile);
+  }
 
   //visual//
   return (
@@ -52,7 +56,7 @@ function Main({
         userAvatar={currentUser.avatar}
         onEditProfileClick={onEditProfileClick}
         userName={currentUser.name}
-        userDescrprion={currentUser.descrprion}
+        userDescrprion={currentUser.about}
         onAddPlaceClick={onAddPlaceClick}
       />
 
@@ -63,42 +67,11 @@ function Main({
         onCardDelete={handleCardDelete}
       />
 
-      <PopupWithForm
-        name="edit-profile"
-        id="profile"
-        header="Editar Perfil"
-        submitButton="edit"
-        buttonText="actualizar"
+      <EditProfilePopup
         isOpen={isOpen[0]}
         onClose={onClose}
-      >
-        <input
-          type="text"
-          className="form__input"
-          placeholder="Nombre"
-          id="name-input"
-          name="name"
-          required
-          minLength="2"
-          maxLength="30"
-        />
-
-        <span className="form__input-error name-input-error"></span>
-
-        <input
-          type="text"
-          className="form__input"
-          placeholder="Acerca de mi"
-          id="about-me-input"
-          name="about-me"
-          required
-          minLength="2"
-          maxLength="20"
-        />
-
-        <span className="form__input-error about-me-input-error"></span>
-      </PopupWithForm>
-
+        onUpdateUser={handleUpdateUser}
+      />
       <PopupWithForm
         name="new-place"
         id="place"
