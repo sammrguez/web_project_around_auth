@@ -49,8 +49,8 @@ function App() {
       setCards([newCard, ...cards]);
     });
   }
-  function handleUpdateAvatar(profile) {
-    api.setUserAvatar(profile);
+  function handleUpdateAvatar(url) {
+    api.setUserAvatar(url);
   }
   function handleUpdateUser(profile) {
     api.setUserInfo(profile).then((res) => {});
@@ -105,7 +105,7 @@ function App() {
         <AddPlacePopup
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
-          onUpdateAvatar={handleAddPlaceSubmit}
+          onAddPlaceSubmit={handleAddPlaceSubmit}
         />
       </Main>
       <Footer />

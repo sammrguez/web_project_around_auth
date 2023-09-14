@@ -45,7 +45,6 @@ class Api {
   }
 
   changeLikeCardStatus(cardId, isLiked) {
-    console.log(isLiked);
     if (isLiked) {
       return fetch(`${this._address}/${this._groupId}/cards/likes/${cardId}`, {
         method: "DELETE",
@@ -127,7 +126,7 @@ class Api {
       });
   }
 
-  setUserAvatar(profile) {
+  setUserAvatar(url) {
     return fetch(`${this._address}/${this._groupId}/users/me/avatar`, {
       method: "PATCH",
       headers: {
@@ -135,7 +134,7 @@ class Api {
         "content-Type": "application/json",
       },
       body: JSON.stringify({
-        avatar: profile.avatar,
+        avatar: url,
       }),
     })
       .then((res) => {

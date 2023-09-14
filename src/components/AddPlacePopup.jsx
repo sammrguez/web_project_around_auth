@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PopupWithForm from "./PopupWithForm";
 
-function AddPlacePopup({ onClose, isOpen, onUpdateAvatar }) {
+function AddPlacePopup({ onClose, isOpen, onAddPlaceSubmit }) {
   const [placeName, setPlaceName] = useState("");
   const [link, setLink] = useState("");
 
@@ -9,18 +9,17 @@ function AddPlacePopup({ onClose, isOpen, onUpdateAvatar }) {
     switch (e.target.name) {
       case "place-name":
         setPlaceName(e.target.value);
-        console.log(e.target.value);
+
         break;
       case "link":
         setLink(e.target.value);
-        console.log(e.target.value);
 
         break;
     }
   }
   function handleSubmit(e) {
     e.preventDefault();
-    onUpdateAvatar({
+    onAddPlaceSubmit({
       name: placeName,
       link: link,
     });

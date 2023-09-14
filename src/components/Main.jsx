@@ -1,8 +1,5 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useContext } from "react";
 
-import PopupWithForm from "./PopupWithForm";
-
-import api from "../utils/api";
 import PopupConfirmation from "./PopupConfirmation";
 import Profile from "./Profile";
 import CardContainer from "./CardContainer";
