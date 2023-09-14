@@ -1,29 +1,35 @@
 import React from "react";
-function PopupWithForm(props) {
+
+function PopupWithForm({
+  isOpen,
+  name,
+  id,
+  onSubmit,
+  onClose,
+  header,
+  children,
+  submitButton,
+  buttonText,
+}) {
   return (
-    <div
-      className={`popup popup_type_${props.name} ${
-        props.isOpen ? "popup_opened" : ""
-      }`}
-    >
+    <div className={`popup popup_type_${name} ${isOpen ? "popup_opened" : ""}`}>
       <div className="overlay"></div>
-      <form className="form" id={props.id} noValidate name={props.name}>
+      <form className="form" id={id} noValidate name={name} onSubmit={onSubmit}>
         <button
           className="form__close-button"
-          onClick={props.onClose}
+          onClick={onClose}
           type="button"
         ></button>
-
         <div className="form__container">
-          <h3 className="form__header">{props.header}</h3>
-
+          <h3 className="form__header">{header}</h3>
           <fieldset className="form__input-container">
-            {props.children}
+            {children}
             <button
-              className={`form__submit-button form__submit-button_${props.submitButton}`}
+              className={`form__submit-button form__submit-button_${submitButton}`}
               type="submit"
+              onClick={onClose}
             >
-              {props.buttonText}
+              {buttonText}
             </button>
           </fieldset>
         </div>
@@ -31,4 +37,5 @@ function PopupWithForm(props) {
     </div>
   );
 }
+
 export default PopupWithForm;
