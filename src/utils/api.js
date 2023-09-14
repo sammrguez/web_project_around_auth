@@ -1,11 +1,10 @@
 class Api {
   constructor({ address, groupId, token }) {
-    // this._baseUrl = baseUrl;
     this._address = address;
-    // this._headers = headers;
+
     this._groupId = groupId;
     this._token = token;
-    // this._authorization = headers.authorization;
+
     this._cardId = "64f77814e5aaa3082e748197";
   }
 
@@ -146,6 +145,29 @@ class Api {
         return Promise.reject(res.status);
       })
 
+      .catch((error) => {
+        console.log(`Error: ${error}`);
+      });
+  }
+
+  addCard(card) {
+    return fetch(`${this._address}/${this._groupId}/cards`, {
+      method: "POST",
+      headers: {
+        authorization: this._token,
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: card.name,
+        link: card.link,
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(res.status);
+      })
       .catch((error) => {
         console.log(`Error: ${error}`);
       });

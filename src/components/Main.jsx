@@ -16,36 +16,12 @@ function Main({
   onClose,
   onCardClick,
   selectedCard,
-  isEditAvatarPopupOpen,
-  isAddPlacePopupOpen,
-  isEditProfilePopupOpen,
   children,
+  cards,
+  onCardLike,
+  onCardDelete,
 }) {
   const currentUser = useContext(CurrentUserContext);
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    api
-      .cardsAddedRequest()
-      .then((data) => {
-        setCards(data);
-      })
-      .catch((error) => {
-        console.log(`Error: ${error}`);
-      });
-  }, []);
-
-  function handleCardLike(card) {
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
-    api.changeLikeCardStatus(card._id, isLiked).then((newCard) => {
-      setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
-    });
-  }
-  function handleCardDelete(card) {
-    api.deleteCard(card._id).then((res) => {
-      setCards((state) => state.filter((c) => c._id !== card._id));
-    });
-  }
 
   //visual//
   return (
@@ -60,46 +36,11 @@ function Main({
       />
 
       <CardContainer
-        onCardLike={handleCardLike}
+        onCardLike={onCardLike}
         cards={cards}
         onCardClick={onCardClick}
-        onCardDelete={handleCardDelete}
+        onCardDelete={onCardDelete}
       />
-
-      <PopupWithForm
-        name="new-place"
-        id="place"
-        header="Nuevo Lugar"
-        submitButton="place"
-        buttonText="crear"
-        isOpen={isAddPlacePopupOpen}
-        onClose={onClose}
-      >
-        <input
-          type="text"
-          className="form__input"
-          placeholder="Título"
-          id="place-name-input"
-          name="placeName"
-          minLength="4"
-          maxLength="30"
-          required
-        />
-
-        <span className="form__input-error place-name-input-error"></span>
-
-        <input
-          type="url"
-          className="form__input"
-          placeholder="Enlace a la Imagen"
-          id="photo-link-input"
-          name="link"
-          required
-          minLength="4"
-        />
-
-        <span className="form__input-error photo-link-input-error"></span>
-      </PopupWithForm>
 
       <ImagePopup name="photo" onClose={onClose} selectedCard={selectedCard} />
       <PopupConfirmation />
