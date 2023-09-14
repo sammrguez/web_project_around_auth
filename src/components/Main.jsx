@@ -100,27 +100,6 @@ function Main({
 
         <span className="form__input-error photo-link-input-error"></span>
       </PopupWithForm>
-      <PopupWithForm
-        name="update-avatar"
-        id="avatar"
-        header="Editar foto de perfil"
-        submitButton="avatar"
-        buttonText="guardar"
-        isOpen={isEditAvatarPopupOpen}
-        onClose={onClose}
-      >
-        <input
-          type="url"
-          className="form__input"
-          placeholder="Link de foto"
-          id="avatar-input"
-          name="updateAvatar"
-          required
-          minLength="4"
-        />
-
-        <span className="form__input-error avatar-input-error"></span>
-      </PopupWithForm>
 
       <ImagePopup name="photo" onClose={onClose} selectedCard={selectedCard} />
       <PopupConfirmation />

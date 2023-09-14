@@ -127,6 +127,29 @@ class Api {
         console.log(`Error: ${error}`);
       });
   }
+
+  setUserAvatar(profile) {
+    return fetch(`${this._address}/${this._groupId}/users/me/avatar`, {
+      method: "PATCH",
+      headers: {
+        authorization: this._token,
+        "content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        avatar: profile.avatar,
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(res.status);
+      })
+
+      .catch((error) => {
+        console.log(`Error: ${error}`);
+      });
+  }
 }
 
 const api = new Api({

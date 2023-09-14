@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import api from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup";
+import EditAvatarPopup from "./EditAvatarPopup";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -18,6 +19,9 @@ function App() {
       setCurrentUser(res);
     });
   }, [currentUser]);
+  function handleUpdateAvatar(profile) {
+    api.setUserAvatar(profile);
+  }
   function handleUpdateUser(profile) {
     api.setUserInfo(profile).then((res) => {});
   }
@@ -59,6 +63,11 @@ function App() {
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
           onUpdateUser={handleUpdateUser}
+        />
+        <EditAvatarPopup
+          isOpen={isEditAvatarPopupOpen}
+          onClose={closeAllPopups}
+          onUpdateAvatar={handleUpdateAvatar}
         />
       </Main>
       <Footer />
