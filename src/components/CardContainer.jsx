@@ -12,9 +12,9 @@ function CardContainer({ cards, onCardClick, onCardLike, onCardDelete }) {
           <Card
             key={card._id}
             card={card}
-            onCardClick={() => onCardClick(card)}
-            onCardLike={() => onCardLike(card)}
-            onCardDelete={() => onCardDelete(card)}
+            onCardClick={onCardClick}
+            onCardLike={onCardLike}
+            onCardDelete={onCardDelete}
           />
         );
       })}
