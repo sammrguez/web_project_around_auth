@@ -1,3 +1,1 @@
-### Enlace al proyecto :
-
-- https://sammrguez.github.io/around-react_es/
+# Tripleten web_project_around_auth
