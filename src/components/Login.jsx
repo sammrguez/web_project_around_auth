@@ -5,7 +5,10 @@ import { Link } from 'react-router-dom';
 function Login() {
   return (
     <Header>
-      <Link to='/register'> Regístrate</Link>
+      <Link to='/signin' className='header__sign'>
+        {' '}
+        Registrate
+      </Link>
     </Header>
   );
 }

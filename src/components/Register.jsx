@@ -6,7 +6,10 @@ function Register() {
   return (
     <>
       <Header>
-        <Link to='/login'> Iniciar Sesión</Link>
+        <Link to='/signup' className='header__sign'>
+          {' '}
+          Iniciar Sesión
+        </Link>
       </Header>
     </>
   );

@@ -6,6 +6,7 @@ import Register from './Register';
 import Login from './Login';
 import Main from './Main';
 import Footer from './Footer';
+import ProtectedRoute from './ProtectedRoute';
 import api from '../utils/api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import EditProfilePopup from './EditProfilePopup';
@@ -18,6 +19,7 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
   const [currentUser, setCurrentUser] = useState({});
+  const [loggedIn, setLoggedIn] = useState(false);
   useEffect(() => {
     api.getUserInfo().then((res) => {
       setCurrentUser(res);
@@ -80,43 +82,48 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <Header />
       <Routes>
-        <Route
-          path='/'
-          element={
-            <Main
-              onEditAvatarClick={handleEditAvatarClick}
-              onEditProfileClick={handleEditProfileClick}
-              onAddPlaceClick={handleAddPlaceClick}
-              onCardClick={handleCardClick}
-              selectedCard={selectedCard}
-              isEditAvatarPopupOpen={isEditAvatarPopupOpen}
-              isAddPlacePopupOpen={isAddPlacePopupOpen}
-              isEditProfilePopupOpen={isEditProfilePopupOpen}
-              onClose={closeAllPopups}
-              cards={cards}
-              onCardLike={handleCardLike}
-              onCardDelete={handleCardDelete}
-            >
-              <EditProfilePopup
-                isOpen={isEditProfilePopupOpen}
-                onClose={closeAllPopups}
-                onUpdateUser={handleUpdateUser}
-              />
-              <EditAvatarPopup
-                isOpen={isEditAvatarPopupOpen}
-                onClose={closeAllPopups}
-                onUpdateAvatar={handleUpdateAvatar}
-              />
-              <AddPlacePopup
-                isOpen={isAddPlacePopupOpen}
-                onClose={closeAllPopups}
-                onAddPlaceSubmit={handleAddPlaceSubmit}
-              />
-            </Main>
-          }
-        ></Route>
+        <Route element={<ProtectedRoute loggedIn={loggedIn} />}>
+          <Route
+            path='/'
+            element={
+              <>
+                <Header />
+                <Main
+                  onEditAvatarClick={handleEditAvatarClick}
+                  onEditProfileClick={handleEditProfileClick}
+                  onAddPlaceClick={handleAddPlaceClick}
+                  onCardClick={handleCardClick}
+                  selectedCard={selectedCard}
+                  isEditAvatarPopupOpen={isEditAvatarPopupOpen}
+                  isAddPlacePopupOpen={isAddPlacePopupOpen}
+                  isEditProfilePopupOpen={isEditProfilePopupOpen}
+                  onClose={closeAllPopups}
+                  cards={cards}
+                  onCardLike={handleCardLike}
+                  onCardDelete={handleCardDelete}
+                >
+                  <EditProfilePopup
+                    isOpen={isEditProfilePopupOpen}
+                    onClose={closeAllPopups}
+                    onUpdateUser={handleUpdateUser}
+                  />
+                  <EditAvatarPopup
+                    isOpen={isEditAvatarPopupOpen}
+                    onClose={closeAllPopups}
+                    onUpdateAvatar={handleUpdateAvatar}
+                  />
+                  <AddPlacePopup
+                    isOpen={isAddPlacePopupOpen}
+                    onClose={closeAllPopups}
+                    onAddPlaceSubmit={handleAddPlaceSubmit}
+                  />
+                </Main>
+              </>
+            }
+          ></Route>
+        </Route>
+
         <Route path='/signup' element={<Register />}></Route>
         <Route path='/signin' element={<Login />}></Route>
       </Routes>
