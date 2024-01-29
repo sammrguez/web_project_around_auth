@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import '../index.css';
-import Header from './Header';
+import ProtectedRoute from './ProtectedRoute';
 import Register from './Register';
 import Login from './Login';
+import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-import ProtectedRoute from './ProtectedRoute';
 import api from '../utils/api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import EditProfilePopup from './EditProfilePopup';
