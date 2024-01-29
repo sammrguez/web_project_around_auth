@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom';
 
 function Login() {
   return (
-    <Header>
-      <Link to='/signin' className='header__sign'>
-        {' '}
-        Registrate
-      </Link>
-    </Header>
+    <>
+      <Header>
+        <Link to='/signup' className='header__sign'>
+          {' '}
+          Registrate
+        </Link>
+      </Header>
+    </>
   );
 }
 
