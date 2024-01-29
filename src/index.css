@@ -46,3 +46,9 @@
 
 @import url(./blocks/footer/footer.css);
 @import url(./blocks/footer/__copyright/footer__copyright.css);
+
+@import url(./blocks/sign/sign.css);
+@import url(./blocks/sign/__title/sign__title.css);
+@import url(./blocks/sign/__input/sign__input.css);
+@import url(./blocks/sign/__input-container/sign__input-container.css);
+@import url(./blocks/sign/__submit-button/sign__submit-button.css);
