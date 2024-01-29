@@ -12,7 +12,33 @@ function Register() {
           Iniciar Sesión
         </Link>
       </Header>
-      <Signs header={'Regístrate'} />
+      <Signs
+        header={'Regístrate'}
+        buttonText={'Regístrate'}
+        linkSpan={'../signin'}
+        linkSpanText={'¿Ya eres miembro? Inicia sesión aquí'}
+      >
+        <input
+          type='text'
+          className='sign__input'
+          placeholder='Correo electrónico'
+          id='email'
+          name='place-name'
+          minLength='4'
+          maxLength='30'
+          required
+        />
+        <input
+          type='text'
+          className='sign__input'
+          placeholder='Contraseña'
+          id='password'
+          name='place-name'
+          minLength='4'
+          maxLength='30'
+          required
+        />
+      </Signs>
     </>
   );
 }
