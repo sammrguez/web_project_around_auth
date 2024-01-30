@@ -1,13 +1,12 @@
+import { text } from 'express';
 import React from 'react';
-import errorMessageImage from '../images/error_message.svg';
-import successMessageImage from '../images/success_message.svg';
 
-function InfoTooltipo() {
+function InfoTooltipo({ icon, text }) {
   return (
     <div className='popup popup_type_infoTool'>
       <div className='overlay'></div>
-      <img ref={successMessageImage} className='infoTool__image' />
-      <p className='infoTool__text'>'¡Correcto! Ya estás registrado.'</p>
+      <img ref={icon} className='infoTool__image' />
+      <p className='infoTool__text'>{text}</p>
     </div>
   );
 }
