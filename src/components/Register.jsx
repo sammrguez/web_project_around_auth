@@ -1,29 +1,35 @@
 import React, { useState } from 'react';
 import Header from './Header';
 import Signs from './Signs';
-import { Link } from 'react-router-dom';
-import errorMessageImage from '../images/error_message.svg';
-import successMessageImage from '../images/success_message.svg';
+import { Link, useNavigate } from 'react-router-dom';
+import * as auth from '../utils/auth';
 
 function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   function handleChange(evt) {
     switch (evt.target.name) {
       case 'email':
         setEmail(evt.target.value);
-
+        console.log({ email });
         break;
 
       case 'password':
         setPassword(evt.target.value);
-
+        console.log({ password });
         break;
     }
   }
 
-  function handleSubmit() {}
+  async function handleSubmit(evt) {
+    evt.preventDefault();
+    try {
+      await auth.register({ email, password });
+      navigate('../signin');
+    } catch (error) {}
+  }
 
   return (
     <>
