@@ -7,10 +7,18 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "browserify-zlib": "^0.2.0",
+    "crypto-browserify": "^3.12.0",
+    "path-browserify": "false",
+    "querystring-es3": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.3",
     "react-scripts": "5.0.1",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "url": "^0.11.3",
+    "util": "^0.12.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -41,6 +49,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "gh-pages": "^6.0.0"
+    "gh-pages": "^6.0.0",
+    "svg-inline-loader": "^0.8.2"
   }
 }

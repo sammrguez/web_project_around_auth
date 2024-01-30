@@ -3,31 +3,37 @@ import Header from './Header';
 import Signs from './Signs';
 import { Link, useNavigate } from 'react-router-dom';
 import * as auth from '../utils/auth';
+import successIcon from '../images/success_message.svg';
 
 function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const [successRegister, setsuccessRegister] = useState(null);
 
   function handleChange(evt) {
     switch (evt.target.name) {
       case 'email':
         setEmail(evt.target.value);
-        console.log({ email });
+
         break;
 
       case 'password':
         setPassword(evt.target.value);
-        console.log({ password });
+
         break;
     }
   }
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    auth.register({ email, password }).then((res) => {
-      console.log(res);
-      navigate('../signin');
+    auth.register({ email, password }).then((data) => {
+      console.log(data);
+
+      if (data) {
+        setsuccessRegister(true);
+        navigate('../signin');
+      }
     });
   }
 

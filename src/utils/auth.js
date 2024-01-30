@@ -7,10 +7,19 @@ export const register = ({ email, password }) => {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ email, password }),
+    body: JSON.stringify({
+      password: password,
+      email: email,
+    }),
   })
     .then((res) => {
-      return res.json();
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(res.status);
     })
-    .catch((err) => console.log(err));
+
+    .catch((error) => {
+      console.log(`Error: ${error}`);
+    });
 };
