@@ -23,12 +23,12 @@ function Register() {
     }
   }
 
-  async function handleSubmit(evt) {
+  function handleSubmit(evt) {
     evt.preventDefault();
-    try {
-      await auth.register({ email, password });
+    auth.register({ email, password }).then((res) => {
+      console.log(res);
       navigate('../signin');
-    } catch (error) {}
+    });
   }
 
   return (
