@@ -3,6 +3,7 @@ import Header from './Header';
 import Signs from './Signs';
 import { Link, useNavigate } from 'react-router-dom';
 import * as auth from '../utils/auth';
+import InfoTooltipo from './InfoTooltipo';
 import successIcon from '../images/success_message.svg';
 
 function Register() {
@@ -33,6 +34,8 @@ function Register() {
       if (data) {
         setsuccessRegister(true);
         navigate('../signin');
+      } else {
+        setsuccessRegister(false);
       }
     });
   }
@@ -77,6 +80,7 @@ function Register() {
           required
         />
       </Signs>
+      <InfoTooltipo icon={successIcon} text={'exito'} />
     </>
   );
 }
