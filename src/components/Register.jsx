@@ -6,8 +6,8 @@ import * as auth from '../utils/auth';
 
 function Register() {
   const [userCredentials, setuserCredentials] = useState({
-    email: ' ',
-    password: ' ',
+    email: '',
+    password: '',
   });
   const navigate = useNavigate();
   const [successRegister, setsuccessRegister] = useState(null);
@@ -18,6 +18,7 @@ function Register() {
       ...userCredentials,
       [name]: value,
     });
+    console.log(userCredentials);
   }
 
   function handleSubmit(evt) {

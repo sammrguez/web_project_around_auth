@@ -26,7 +26,7 @@ function App() {
 
   const [cards, setCards] = useState([]);
 
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
     api.getUserInfo().then((res) => {
@@ -103,6 +103,10 @@ function App() {
 
     setSelectedCard(false);
   }
+  function handleLogin() {
+    setLoggedIn(true);
+    console.log(loggedIn);
+  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -149,7 +153,10 @@ function App() {
         </Route>
 
         <Route path='/signup' element={<Register />}></Route>
-        <Route path='/signin' element={<Login />}></Route>
+        <Route
+          path='/signin'
+          element={<Login onSubmit={handleLogin} />}
+        ></Route>
       </Routes>
       <Footer />
     </CurrentUserContext.Provider>
