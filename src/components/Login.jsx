@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './Header';
 import Signs from './Signs';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Login() {
+  const [userCredentials, setuserCredentials] = useState({
+    email: ' ',
+    password: ' ',
+  });
+
+  function handleChange(evt) {
+    const { name, value } = evt.target;
+    setuserCredentials({
+      ...userCredentials,
+      [name]: value,
+    });
+  }
+  function handleSubmit() {}
+
   return (
     <>
       <Header>
@@ -17,6 +31,7 @@ function Login() {
         buttonText={'Inicia sesión'}
         linkSpan={'../signup'}
         linkSpanText={'¿Aún no eres miembro? Regístrate aquí'}
+        onSubmit={handleSubmit}
       >
         <input
           type='text'

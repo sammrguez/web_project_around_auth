@@ -3,41 +3,37 @@ import Header from './Header';
 import Signs from './Signs';
 import { Link, useNavigate } from 'react-router-dom';
 import * as auth from '../utils/auth';
-import InfoTooltipo from './InfoTooltipo';
-import successIcon from '../images/success_message.svg';
 
 function Register() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [userCredentials, setuserCredentials] = useState({
+    email: ' ',
+    password: ' ',
+  });
   const navigate = useNavigate();
   const [successRegister, setsuccessRegister] = useState(null);
 
   function handleChange(evt) {
-    switch (evt.target.name) {
-      case 'email':
-        setEmail(evt.target.value);
-
-        break;
-
-      case 'password':
-        setPassword(evt.target.value);
-
-        break;
-    }
+    const { name, value } = evt.target;
+    setuserCredentials({
+      ...userCredentials,
+      [name]: value,
+    });
   }
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    auth.register({ email, password }).then((data) => {
-      console.log(data);
+    auth
+      .register(userCredentials.email, userCredentials.password)
+      .then((data) => {
+        console.log(data);
 
-      if (data) {
-        setsuccessRegister(true);
-        navigate('../signin');
-      } else {
-        setsuccessRegister(false);
-      }
-    });
+        if (data) {
+          setsuccessRegister(true);
+          navigate('../signin');
+        } else {
+          setsuccessRegister(false);
+        }
+      });
   }
 
   return (
@@ -64,7 +60,6 @@ function Register() {
           minLength='4'
           maxLength='30'
           onChange={handleChange}
-          value={email}
           required
         />
         <input
@@ -76,11 +71,9 @@ function Register() {
           minLength='4'
           maxLength='30'
           onChange={handleChange}
-          value={password}
           required
         />
       </Signs>
-      <InfoTooltipo icon={successIcon} text={'exito'} />
     </>
   );
 }
