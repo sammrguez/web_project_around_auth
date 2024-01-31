@@ -1,7 +1,6 @@
 .sign {
-  height: 435px;
   max-width: 358px;
-  /* background-color: brown; */
+
   display: flex;
   flex-direction: column;
   margin: 20px auto 80px auto;

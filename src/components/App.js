@@ -15,24 +15,34 @@ import AddPlacePopup from './AddPlacePopup';
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
+
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
+
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+
   const [selectedCard, setSelectedCard] = useState(null);
+
   const [currentUser, setCurrentUser] = useState({});
+
+  const [cards, setCards] = useState([]);
+
   const [loggedIn, setLoggedIn] = useState(true);
+
   useEffect(() => {
     api.getUserInfo().then((res) => {
       setCurrentUser(res);
     });
-  }, [currentUser]);
-  const [cards, setCards] = useState([]);
+  }, []);
 
   useEffect(() => {
     api
+
       .cardsAddedRequest()
+
       .then((data) => {
         setCards(data);
       })
+
       .catch((error) => {
         console.log(`Error: ${error}`);
       });
@@ -40,29 +50,38 @@ function App() {
 
   function handleCardLike(card) {
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
+
     api.changeLikeCardStatus(card._id, isLiked).then((newCard) => {
       setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
     });
   }
+
   function handleCardDelete(card) {
     api.deleteCard(card._id).then((res) => {
       setCards((state) => state.filter((c) => c._id !== card._id));
     });
   }
+
   function handleAddPlaceSubmit(card) {
     api.addCard(card).then((newCard) => {
       setCards([newCard, ...cards]);
     });
   }
+
   function handleUpdateAvatar(url) {
     api.setUserAvatar(url);
   }
+
   function handleUpdateUser(profile) {
-    api.setUserInfo(profile).then((res) => {});
+    api.setUserInfo(profile).then((res) => {
+      setCurrentUser(res);
+    });
   }
+
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
   }
+
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
   }
@@ -70,13 +89,18 @@ function App() {
   function handleAddPlaceClick() {
     setIsAddPlacePopupOpen(true);
   }
+
   function handleCardClick(card) {
     setSelectedCard(card);
   }
+
   function closeAllPopups() {
     setIsEditProfilePopupOpen(false);
+
     setIsEditAvatarPopupOpen(false);
+
     setIsAddPlacePopupOpen(false);
+
     setSelectedCard(false);
   }
 
