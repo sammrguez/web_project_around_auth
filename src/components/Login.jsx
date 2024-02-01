@@ -30,11 +30,11 @@ function Login({ handleLogin }) {
         console.log(data);
         if (data.token) {
           setuserCredentials({
-            email: ' ',
-            password: ' ',
+            email: '',
+            password: '',
           });
-          handleLogin();
           navigate('/');
+          handleLogin();
         }
       })
       .catch((err) => console.log(err));

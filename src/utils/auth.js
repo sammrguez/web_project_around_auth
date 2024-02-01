@@ -22,22 +22,33 @@ export const register = (email, password) => {
 };
 
 export const authorize = (email, password) => {
-  console.log(` llegando ${email} y ${password} desde auth`);
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      // authorization: `Bearer${localStorage.getItem('token')}`,
     },
     body: JSON.stringify({ email: email, password: password }),
-  }).then((res) => res.json());
-  // .then((data) => {
-  //   if (data.token) {
-  //     localStorage.setItem('token', data.token);
-  //     return data;
-  //   } else {
-  //     return;
-  //   }
-  // });
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.token) {
+        localStorage.setItem('token', data.token);
+        return data;
+      } else {
+        return;
+      }
+    });
+};
+
+export const getToken = (token) => {
+  return fetch(`${BASE_URL}/users/me`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer${token}`,
+    },
+  })
+    .then((res) => res.json())
+    .then((data) => data);
 };
