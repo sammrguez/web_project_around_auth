@@ -4,6 +4,9 @@ import Signs from './Signs';
 import { Link, useNavigate } from 'react-router-dom';
 import * as auth from '../utils/auth';
 
+import successIcon from '../images/success_message.svg';
+import InfoTooltipo from './InfoTooltipo';
+
 function Register() {
   const [userCredentials, setuserCredentials] = useState({
     email: '',
@@ -75,6 +78,7 @@ function Register() {
           required
         />
       </Signs>
+      <InfoTooltipo icon={successIcon} text={'exito'} />
     </>
   );
 }
