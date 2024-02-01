@@ -7,8 +7,8 @@ import * as auth from '../utils/auth';
 function Login({ handleLogin }) {
   const navigate = useNavigate();
   const [userCredentials, setuserCredentials] = useState({
-    email: ' ',
-    password: ' ',
+    email: '',
+    password: '',
   });
 
   function handleChange(evt) {
@@ -20,12 +20,14 @@ function Login({ handleLogin }) {
   }
   function handleSubmit(evt) {
     evt.preventDefault();
+    console.log(userCredentials);
     if (!userCredentials.email || !userCredentials.password) {
       return;
     }
     auth
       .authorize(userCredentials.email, userCredentials.password)
       .then((data) => {
+        console.log(data);
         if (data.token) {
           setuserCredentials({
             email: ' ',
@@ -56,26 +58,26 @@ function Login({ handleLogin }) {
         onSubmit={handleSubmit}
       >
         <input
-          type='text'
+          type='email'
           className='sign__input'
           placeholder='Correo electrónico'
           id='email'
-          name='place-name'
+          name='email'
           minLength='4'
           maxLength='30'
-          required
           onChange={handleChange}
+          required
         />
         <input
           type='password'
           className='sign__input'
           placeholder='Contraseña'
           id='password'
-          name='place-name'
+          name='password'
           minLength='4'
           maxLength='30'
-          required
           onChange={handleChange}
+          required
         />
       </Signs>
     </>

@@ -22,6 +22,7 @@ export const register = (email, password) => {
 };
 
 export const authorize = (email, password) => {
+  console.log(` llegando ${email} y ${password} desde auth`);
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
     headers: {
@@ -30,14 +31,13 @@ export const authorize = (email, password) => {
       // authorization: `Bearer${localStorage.getItem('token')}`,
     },
     body: JSON.stringify({ email: email, password: password }),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.token) {
-        localStorage.setItem('token', data.token);
-        return data;
-      } else {
-        return;
-      }
-    });
+  }).then((res) => res.json());
+  // .then((data) => {
+  //   if (data.token) {
+  //     localStorage.setItem('token', data.token);
+  //     return data;
+  //   } else {
+  //     return;
+  //   }
+  // });
 };

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Link } from 'react-router-dom';
 import '../index.css';
 import ProtectedRoute from './ProtectedRoute';
 import Register from './Register';
@@ -26,7 +26,7 @@ function App() {
 
   const [cards, setCards] = useState([]);
 
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   useEffect(() => {
     api.getUserInfo().then((res) => {
@@ -105,7 +105,6 @@ function App() {
   }
   function handleLogin() {
     setLoggedIn(true);
-    console.log(loggedIn);
   }
 
   return (
@@ -116,7 +115,13 @@ function App() {
             path='/'
             element={
               <>
-                <Header />
+                <Header>
+                  <Link to='/signin' className='header__sign'>
+                    {' '}
+                    Cerrar Sesión
+                  </Link>
+                  <p className='header__sign'>{'someuser@gmail.com'} </p>
+                </Header>
                 <Main
                   onEditAvatarClick={handleEditAvatarClick}
                   onEditProfileClick={handleEditProfileClick}
@@ -155,7 +160,7 @@ function App() {
         <Route path='/signup' element={<Register />}></Route>
         <Route
           path='/signin'
-          element={<Login onSubmit={handleLogin} />}
+          element={<Login handleLogin={handleLogin} />}
         ></Route>
       </Routes>
       <Footer />
