@@ -38,7 +38,8 @@ export const authorize = (email, password) => {
       } else {
         return;
       }
-    });
+    })
+    .catch((err) => console.log(err));
 };
 
 export const getToken = (token) => {

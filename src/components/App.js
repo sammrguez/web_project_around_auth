@@ -30,6 +30,8 @@ function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
 
+  const [email, setEmail] = useState('');
+
   useEffect(() => {
     api.getUserInfo().then((res) => {
       setCurrentUser(res);
@@ -57,9 +59,12 @@ function App() {
         .getToken(token)
         .then((data) => {
           if (data) {
+            console.log(data);
             setLoggedIn(true);
+            setEmail(data.email);
             navigate('/');
           } else {
+            navigate('/signin');
             throw new Error('Token inválido');
           }
         })
@@ -67,7 +72,7 @@ function App() {
           console.log(err);
         });
     }
-  });
+  }, [loggedIn, navigate]);
 
   function handleCardLike(card) {
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
@@ -128,6 +133,11 @@ function App() {
     setLoggedIn(true);
   }
 
+  function signOut() {
+    localStorage.removeItem('token');
+    navigate('./signin');
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <Routes>
@@ -137,11 +147,11 @@ function App() {
             element={
               <>
                 <Header>
-                  <Link to='/signin' className='header__sign'>
+                  <button onClick={signOut} className='header__sign'>
                     {' '}
                     Cerrar Sesión
-                  </Link>
-                  <p className='header__sign'>{'someuser@gmail.com'} </p>
+                  </button>
+                  <p className='header__sign'>{email} </p>
                 </Header>
                 <Main
                   onEditAvatarClick={handleEditAvatarClick}
