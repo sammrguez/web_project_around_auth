@@ -53,15 +53,16 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
+    if (localStorage.getItem('token')) {
+      const token = localStorage.getItem('token');
       auth
         .getToken(token)
         .then((data) => {
           if (data) {
             console.log(data);
             setLoggedIn(true);
-            setEmail(data.email);
+            setEmail(data.data.email);
+            console.log(email);
             navigate('/');
           } else {
             navigate('/signin');
@@ -70,6 +71,7 @@ function App() {
         })
         .catch((err) => {
           console.log(err);
+          navigate('/signin');
         });
     }
   }, [loggedIn, navigate]);
@@ -135,6 +137,7 @@ function App() {
 
   function signOut() {
     localStorage.removeItem('token');
+    setEmail('');
     navigate('./signin');
   }
 

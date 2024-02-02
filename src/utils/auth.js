@@ -43,13 +43,17 @@ export const authorize = (email, password) => {
 };
 
 export const getToken = (token) => {
+  console.log(` el token recibido en auth es:${token}`);
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      authorization: `Bearer${token}`,
+      Authorization: `Bearer ${token}`,
     },
   })
     .then((res) => res.json())
-    .then((data) => data);
+    .then((data) => {
+      return data;
+    })
+    .catch((err) => console.log(err));
 };
