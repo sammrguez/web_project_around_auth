@@ -2,7 +2,8 @@ import React from 'react';
 import iconSuccesss from '../images/success_message.svg';
 import iconError from '../images/error_message.svg';
 
-function InfoTooltipo({ isSuccess, shoulBeInfoOpen }) {
+function InfoTooltipo({ isSuccess, shoulBeInfoOpen, onCloseBtn }) {
+  console.log('shoulBeInfoOpeninfotool');
   console.log(shoulBeInfoOpen);
   const icon = isSuccess ? iconSuccesss : iconError;
   const messagge = isSuccess
@@ -12,16 +13,16 @@ function InfoTooltipo({ isSuccess, shoulBeInfoOpen }) {
   return (
     <div className={`popup ${shoulBeInfoOpen ? 'popup_opened' : ''}`}>
       <div className='overlay'></div>
-      <button
-        className='form__close-button form__close-button_type_info'
-        type='button'
-      ></button>
+
       <div className='infoTool'>
         <img src={icon} className='infoTool__image' />
         <p className='infoTool__text'>{messagge}</p>
       </div>
-
-      <p className='infoTool__text'>{messagge}</p>
+      <button
+        className='infoTool__close-button'
+        type='button'
+        onClick={onCloseBtn}
+      ></button>
     </div>
   );
 }

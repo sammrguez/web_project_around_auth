@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import Signs from './Signs';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import * as auth from '../utils/auth';
+import InfoTooltipo from './InfoTooltipo';
 
 function Login({ handleLogin }) {
   const navigate = useNavigate();
@@ -10,6 +11,28 @@ function Login({ handleLogin }) {
     email: '',
     password: '',
   });
+
+  const [successRegister, setsuccessRegister] = useState(false);
+
+  const [shoulBeInfoOpen, setShoulBeInfoOpen] = useState(false);
+
+  const location = useLocation();
+
+  function onCloseInfoTool() {
+    setShoulBeInfoOpen(false);
+  }
+
+  useEffect(() => {
+    console.log('shoulBeInfoOpenlog1');
+    console.log(shoulBeInfoOpen);
+    if (location.state === 'success') {
+      setShoulBeInfoOpen(true);
+      setsuccessRegister(true);
+
+      console.log('shoulBeInfoOpenlog2');
+      console.log(shoulBeInfoOpen);
+    }
+  }, [location.state]);
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -81,6 +104,11 @@ function Login({ handleLogin }) {
           required
         />
       </Signs>
+      <InfoTooltipo
+        isSuccess={successRegister}
+        shoulBeInfoOpen={shoulBeInfoOpen}
+        onCloseBtn={onCloseInfoTool}
+      />
     </>
   );
 }

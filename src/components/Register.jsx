@@ -18,6 +18,10 @@ function Register() {
 
   const [shoulBeInfoOpen, setShoulBeInfoOpen] = useState(false);
 
+  function onCloseInfoTool() {
+    setShoulBeInfoOpen(false);
+  }
+
   function handleChange(evt) {
     const { name, value } = evt.target;
     setuserCredentials({
@@ -31,13 +35,8 @@ function Register() {
     auth
       .register(userCredentials.email, userCredentials.password)
       .then((data) => {
-        console.log(data);
-
         if (data) {
-          setShoulBeInfoOpen(true);
-          setsuccessRegister(true);
-          console.log(shoulBeInfoOpen);
-          navigate('../signin');
+          navigate('../signin', { state: 'success' });
         } else {
           setShoulBeInfoOpen(true);
           setsuccessRegister(false);
@@ -86,6 +85,7 @@ function Register() {
       <InfoTooltipo
         isSuccess={successRegister}
         shoulBeInfoOpen={shoulBeInfoOpen}
+        onCloseBtn={onCloseInfoTool}
       />
     </>
   );
