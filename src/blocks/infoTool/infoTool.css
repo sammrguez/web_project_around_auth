@@ -1,0 +1,20 @@
+.infoTool {
+  background-color: white;
+  width: 430px;
+  height: 330px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 60px 40px;
+}
+
+.infoTool__image {
+  width: 120px;
+  align-self: center;
+  margin-bottom: 32px;
+}
+.infoTool__text {
+  font-size: 24px;
+  text-align: justify;
+}

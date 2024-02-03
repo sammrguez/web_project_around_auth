@@ -4,16 +4,19 @@ import Signs from './Signs';
 import { Link, useNavigate } from 'react-router-dom';
 import * as auth from '../utils/auth';
 
-import successIcon from '../images/success_message.svg';
 import InfoTooltipo from './InfoTooltipo';
 
 function Register() {
+  const navigate = useNavigate();
+
   const [userCredentials, setuserCredentials] = useState({
     email: '',
     password: '',
   });
-  const navigate = useNavigate();
-  const [successRegister, setsuccessRegister] = useState(null);
+
+  const [successRegister, setsuccessRegister] = useState(false);
+
+  const [shoulBeInfoOpen, setShoulBeInfoOpen] = useState(false);
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -21,7 +24,6 @@ function Register() {
       ...userCredentials,
       [name]: value,
     });
-    console.log(userCredentials);
   }
 
   function handleSubmit(evt) {
@@ -32,9 +34,12 @@ function Register() {
         console.log(data);
 
         if (data) {
+          setShoulBeInfoOpen(true);
           setsuccessRegister(true);
+          console.log(shoulBeInfoOpen);
           navigate('../signin');
         } else {
+          setShoulBeInfoOpen(true);
           setsuccessRegister(false);
         }
       });
@@ -78,7 +83,10 @@ function Register() {
           required
         />
       </Signs>
-      <InfoTooltipo icon={successIcon} text={'exito'} />
+      <InfoTooltipo
+        isSuccess={successRegister}
+        shoulBeInfoOpen={shoulBeInfoOpen}
+      />
     </>
   );
 }

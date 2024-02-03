@@ -33,6 +33,7 @@ function Login({ handleLogin }) {
             email: '',
             password: '',
           });
+
           navigate('/');
           handleLogin();
         }

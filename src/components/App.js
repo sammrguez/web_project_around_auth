@@ -13,6 +13,7 @@ import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
 import * as auth from '../utils/auth';
+import InfoTooltipo from './InfoTooltipo';
 
 function App() {
   const navigate = useNavigate();
@@ -197,6 +198,7 @@ function App() {
           element={<Login handleLogin={handleLogin} />}
         ></Route>
       </Routes>
+
       <Footer />
     </CurrentUserContext.Provider>
   );
