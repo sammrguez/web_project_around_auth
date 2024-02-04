@@ -43,7 +43,6 @@ export const authorize = (email, password) => {
 };
 
 export const getToken = (token) => {
-  console.log(` el token recibido en auth es:${token}`);
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
     headers: {

@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react';
 
-import PopupConfirmation from "./PopupConfirmation";
-import Profile from "./Profile";
-import CardContainer from "./CardContainer";
-import ImagePopup from "./ImagePopup";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import PopupConfirmation from './PopupConfirmation';
+import Profile from './Profile';
+import CardContainer from './CardContainer';
+import ImagePopup from './ImagePopup';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Main({
   onEditProfileClick,
@@ -20,9 +20,8 @@ function Main({
 }) {
   const currentUser = useContext(CurrentUserContext);
 
-  //visual//
   return (
-    <main className="content">
+    <main className='content'>
       <Profile
         onEditAvatarClick={onEditAvatarClick}
         userAvatar={currentUser.avatar}
@@ -39,7 +38,7 @@ function Main({
         onCardDelete={onCardDelete}
       />
 
-      <ImagePopup name="photo" onClose={onClose} selectedCard={selectedCard} />
+      <ImagePopup name='photo' onClose={onClose} selectedCard={selectedCard} />
       <PopupConfirmation />
       {children}
     </main>

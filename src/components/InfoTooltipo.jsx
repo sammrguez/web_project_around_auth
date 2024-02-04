@@ -3,8 +3,6 @@ import iconSuccesss from '../images/success_message.svg';
 import iconError from '../images/error_message.svg';
 
 function InfoTooltipo({ isSuccess, shoulBeInfoOpen, onCloseBtn }) {
-  console.log('shoulBeInfoOpeninfotool');
-  console.log(shoulBeInfoOpen);
   const icon = isSuccess ? iconSuccesss : iconError;
   const messagge = isSuccess
     ? '¡Correcto! Ya estás registrado.'
@@ -15,7 +13,11 @@ function InfoTooltipo({ isSuccess, shoulBeInfoOpen, onCloseBtn }) {
       <div className='overlay'></div>
 
       <div className='infoTool'>
-        <img src={icon} className='infoTool__image' />
+        <img
+          src={icon}
+          className='infoTool__image'
+          alt={'icono que indica el estado del registro'}
+        />
         <p className='infoTool__text'>{messagge}</p>
       </div>
       <button

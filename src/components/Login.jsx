@@ -23,14 +23,9 @@ function Login({ handleLogin }) {
   }
 
   useEffect(() => {
-    console.log('shoulBeInfoOpenlog1');
-    console.log(shoulBeInfoOpen);
     if (location.state === 'success') {
       setShoulBeInfoOpen(true);
       setsuccessRegister(true);
-
-      console.log('shoulBeInfoOpenlog2');
-      console.log(shoulBeInfoOpen);
     }
   }, [location.state]);
 
@@ -43,14 +38,13 @@ function Login({ handleLogin }) {
   }
   function handleSubmit(evt) {
     evt.preventDefault();
-    console.log(userCredentials);
+
     if (!userCredentials.email || !userCredentials.password) {
       return;
     }
     auth
       .authorize(userCredentials.email, userCredentials.password)
       .then((data) => {
-        console.log(data);
         if (data.token) {
           setuserCredentials({
             email: '',
@@ -63,8 +57,6 @@ function Login({ handleLogin }) {
       })
       .catch((err) => console.log(err));
   }
-  // falta hacer el handle Loggin
-  // data is undefined
 
   return (
     <>

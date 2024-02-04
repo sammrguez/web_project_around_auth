@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Routes, Link, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import '../index.css';
 import ProtectedRoute from './ProtectedRoute';
 import Register from './Register';
@@ -13,7 +13,6 @@ import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
 import * as auth from '../utils/auth';
-import InfoTooltipo from './InfoTooltipo';
 
 function App() {
   const navigate = useNavigate();
@@ -60,10 +59,9 @@ function App() {
         .getToken(token)
         .then((data) => {
           if (data) {
-            console.log(data);
             setLoggedIn(true);
             setEmail(data.data.email);
-            console.log(email);
+
             navigate('/');
           } else {
             navigate('/signin');
