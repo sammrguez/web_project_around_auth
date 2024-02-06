@@ -27,7 +27,8 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "lint": "npx eslint ."
+    "lint": "npx eslint .",
+    "lint-fix": "eslint src --fix"
   },
   "eslintConfig": {
     "extends": [
@@ -49,9 +50,13 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "eslint": "^8.56.0",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
     "gh-pages": "^6.0.0",
     "svg-inline-loader": "^0.8.2"
   }
