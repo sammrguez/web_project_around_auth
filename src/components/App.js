@@ -190,7 +190,7 @@ function App() {
           ></Route>
         </Route>
 
-        <Route path='/signup' element={<Register />}></Route>
+        <Route path='*' element={<Register />}></Route>
         <Route
           path='/signin'
           element={<Login handleLogin={handleLogin} />}
