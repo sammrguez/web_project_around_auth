@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/web_project_around_auth/static/css/main.4f7ace36.css",
-    "main.js": "/web_project_around_auth/static/js/main.161ad684.js",
+    "main.js": "/web_project_around_auth/static/js/main.dc0d68f9.js",
     "static/js/787.7420afd0.chunk.js": "/web_project_around_auth/static/js/787.7420afd0.chunk.js",
     "static/media/Inter-Regular.woff": "/web_project_around_auth/static/media/Inter-Regular.8c206db99195777c6769.woff",
     "static/media/logo-vector.svg": "/web_project_around_auth/static/media/logo-vector.66cff89119b58975ea644f9d7f47a8c5.svg",
@@ -16,11 +16,11 @@
     "static/media/edit-avatar.svg": "/web_project_around_auth/static/media/edit-avatar.ae1a976ddb506239e9f0.svg",
     "static/media/add_button.svg": "/web_project_around_auth/static/media/add_button.bed8c136e13907f5eefb86d62a5fe29e.svg",
     "main.4f7ace36.css.map": "/web_project_around_auth/static/css/main.4f7ace36.css.map",
-    "main.161ad684.js.map": "/web_project_around_auth/static/js/main.161ad684.js.map",
+    "main.dc0d68f9.js.map": "/web_project_around_auth/static/js/main.dc0d68f9.js.map",
     "787.7420afd0.chunk.js.map": "/web_project_around_auth/static/js/787.7420afd0.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4f7ace36.css",
-    "static/js/main.161ad684.js"
+    "static/js/main.dc0d68f9.js"
   ]
 }
