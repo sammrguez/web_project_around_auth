@@ -4,7 +4,7 @@ function Header({ children }) {
   return (
     <section className='header'>
       <img className='header__logo' src={logo} alt='logo del proyecto' />
-      {children}
+      <div className='header__subheaders-container'>{children}</div>
     </section>
   );
 }

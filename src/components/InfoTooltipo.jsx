@@ -1,12 +1,30 @@
-import { text } from 'express';
 import React from 'react';
+import iconSuccesss from '../images/success_message.svg';
+import iconError from '../images/error_message.svg';
 
-function InfoTooltipo({ icon, text }) {
+function InfoTooltipo({ isSuccess, shoulBeInfoOpen, onCloseBtn }) {
+  const icon = isSuccess ? iconSuccesss : iconError;
+  const messagge = isSuccess
+    ? '¡Correcto! Ya estás registrado.'
+    : 'Uy, algo salió mal. Por favor, inténtalo de nuevo.';
+
   return (
-    <div className='popup popup_type_infoTool'>
+    <div className={`popup ${shoulBeInfoOpen ? 'popup_opened' : ''}`}>
       <div className='overlay'></div>
-      <img ref={icon} className='infoTool__image' />
-      <p className='infoTool__text'>{text}</p>
+
+      <div className='infoTool'>
+        <img
+          src={icon}
+          className='infoTool__image'
+          alt={'icono que indica el estado del registro'}
+        />
+        <p className='infoTool__text'>{messagge}</p>
+      </div>
+      <button
+        className='infoTool__close-button'
+        type='button'
+        onClick={onCloseBtn}
+      ></button>
     </div>
   );
 }

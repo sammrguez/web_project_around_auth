@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import '../index.css';
 import ProtectedRoute from './ProtectedRoute';
 import Register from './Register';
@@ -12,8 +12,10 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
+import * as auth from '../utils/auth';
 
 function App() {
+  const navigate = useNavigate();
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
 
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
@@ -26,7 +28,9 @@ function App() {
 
   const [cards, setCards] = useState([]);
 
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const [email, setEmail] = useState('');
 
   useEffect(() => {
     api.getUserInfo().then((res) => {
@@ -47,6 +51,29 @@ function App() {
         console.log(`Error: ${error}`);
       });
   }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      const token = localStorage.getItem('token');
+      auth
+        .getToken(token)
+        .then((data) => {
+          if (data) {
+            setLoggedIn(true);
+            setEmail(data.data.email);
+
+            navigate('/');
+          } else {
+            navigate('/signin');
+            throw new Error('Token inválido');
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          navigate('/signin');
+        });
+    }
+  }, [loggedIn, navigate]);
 
   function handleCardLike(card) {
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
@@ -103,6 +130,15 @@ function App() {
 
     setSelectedCard(false);
   }
+  function handleLogin() {
+    setLoggedIn(true);
+  }
+
+  function signOut() {
+    localStorage.removeItem('token');
+    setEmail('');
+    navigate('./signin');
+  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -112,7 +148,13 @@ function App() {
             path='/'
             element={
               <>
-                <Header />
+                <Header>
+                  <button onClick={signOut} className='header__sign'>
+                    {' '}
+                    Cerrar Sesión
+                  </button>
+                  <p className='header__sign'>{email} </p>
+                </Header>
                 <Main
                   onEditAvatarClick={handleEditAvatarClick}
                   onEditProfileClick={handleEditProfileClick}
@@ -149,8 +191,12 @@ function App() {
         </Route>
 
         <Route path='/signup' element={<Register />}></Route>
-        <Route path='/signin' element={<Login />}></Route>
+        <Route
+          path='/signin'
+          element={<Login handleLogin={handleLogin} />}
+        ></Route>
       </Routes>
+
       <Footer />
     </CurrentUserContext.Provider>
   );
