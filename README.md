@@ -5,6 +5,8 @@ Proyecto "Alrededor de los EE.UU." - Frontend
 Este proyecto de React se enfoca en implementar funciones de registro y autorización para el frontend de la aplicación "Alrededor de los EE.UU." por el momento, está conectada la funcionalidad principal al backend de TripleTen.
 Toda la funcionalidad estará disponible para usuarios autorizados a través de la ruta raíz "/"
 
+## Tecnologías
+
 Asegúrate de tener Node.js y npm instalados en tu máquina. Luego, clona el repositorio y ejecuta el siguiente comando para instalar las dependencias necesarias:
 
 npm install
