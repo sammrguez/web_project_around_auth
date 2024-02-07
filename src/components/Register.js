@@ -4,7 +4,7 @@ import Signs from './Signs';
 import { Link, useNavigate } from 'react-router-dom';
 import * as auth from '../utils/auth';
 
-import InfoTooltipo from './InfoTooltipo';
+import InfoTooltip from './InfoTooltip';
 
 function Register() {
   const navigate = useNavigate();
@@ -28,6 +28,7 @@ function Register() {
       ...userCredentials,
       [name]: value,
     });
+    console.log(userCredentials);
   }
 
   function handleSubmit(evt) {
@@ -42,6 +43,7 @@ function Register() {
           setsuccessRegister(false);
         }
       });
+    console.log(userCredentials);
   }
 
   return (
@@ -82,7 +84,7 @@ function Register() {
           required
         />
       </Signs>
-      <InfoTooltipo
+      <InfoTooltip
         isSuccess={successRegister}
         shoulBeInfoOpen={shoulBeInfoOpen}
         onCloseBtn={onCloseInfoTool}
