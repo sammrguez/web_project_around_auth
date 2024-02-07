@@ -28,7 +28,7 @@ function App() {
 
   const [cards, setCards] = useState([]);
 
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   const [email, setEmail] = useState('');
 
@@ -40,13 +40,10 @@ function App() {
 
   useEffect(() => {
     api
-
       .cardsAddedRequest()
-
       .then((data) => {
         setCards(data);
       })
-
       .catch((error) => {
         console.log(`Error: ${error}`);
       });
@@ -54,9 +51,9 @@ function App() {
 
   useEffect(() => {
     if (localStorage.getItem('jwt')) {
-      const token = localStorage.getItem('jwt');
+      const jwt = localStorage.getItem('jwt');
       auth
-        .getToken(token)
+        .getToken(jwt)
         .then((data) => {
           if (data) {
             setLoggedIn(true);
@@ -135,7 +132,7 @@ function App() {
   }
 
   function signOut() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('jwt');
     setEmail('');
     navigate('./signin');
   }

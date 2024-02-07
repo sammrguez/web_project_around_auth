@@ -38,6 +38,7 @@ function Login({ handleLogin }) {
   function handleSubmit(evt) {
     evt.preventDefault();
     console.log(userCredentials);
+
     if (!userCredentials.email || !userCredentials.password) {
       return;
     }
@@ -50,9 +51,8 @@ function Login({ handleLogin }) {
             email: '',
             password: '',
           });
-
-          navigate('/');
           handleLogin();
+          navigate('/');
         }
       })
       .catch((err) => console.log(err));

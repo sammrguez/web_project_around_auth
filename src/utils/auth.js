@@ -27,29 +27,28 @@ export const register = (email, password) => {
 };
 
 export const authorize = (email, password) => {
-  console.log(`desde auth auth ${email} y ${password}`);
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
+
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
+
     body: JSON.stringify({ email, password }),
   })
-    .then((res) => {
-      console.log(res);
-      if (!res.ok) {
-        throw new Error(`Error al registrarse: ${res.status}`);
-      }
-
-      return res.json();
-    })
+    .then((res) => res.json())
     .then((data) => {
-      return data;
+      if (data.token) {
+        localStorage.setItem('jwt', data.token);
+        console.log(data);
+        return data;
+      } else {
+        return;
+      }
     })
-    .catch((err) => {
-      throw new Error(`Error en la solicitud de registro: ${err.message}`);
-    });
+
+    .catch((err) => console.log(err));
 };
 
 export const getToken = (token) => {
@@ -62,6 +61,7 @@ export const getToken = (token) => {
   })
     .then((res) => res.json())
     .then((data) => {
+      console.log(data);
       return data;
     })
     .catch((err) => {
