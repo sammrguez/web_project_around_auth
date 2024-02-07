@@ -28,7 +28,7 @@ function App() {
 
   const [cards, setCards] = useState([]);
 
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const [email, setEmail] = useState('');
 

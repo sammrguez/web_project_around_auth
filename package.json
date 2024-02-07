@@ -1,6 +1,6 @@
 {
   "name": "web_project_around_auth",
-  "homepage": "http://localhost:3000/",
+  "homepage": "https://github.com/sammrguez/web_project_around_auth.git",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
