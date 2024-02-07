@@ -2,7 +2,7 @@ import React from 'react';
 import iconSuccesss from '../images/success_message.svg';
 import iconError from '../images/error_message.svg';
 
-function InfoTooltipo({ isSuccess, shoulBeInfoOpen, onCloseBtn }) {
+function InfoTooltip({ isSuccess, shoulBeInfoOpen, onCloseBtn }) {
   const icon = isSuccess ? iconSuccesss : iconError;
   const messagge = isSuccess
     ? '¡Correcto! Ya estás registrado.'
@@ -29,4 +29,4 @@ function InfoTooltipo({ isSuccess, shoulBeInfoOpen, onCloseBtn }) {
   );
 }
 
-export default InfoTooltipo;
+export default InfoTooltip;

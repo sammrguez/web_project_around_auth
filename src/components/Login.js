@@ -3,7 +3,7 @@ import Header from './Header';
 import Signs from './Signs';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import * as auth from '../utils/auth';
-import InfoTooltipo from './InfoTooltipo';
+import InfoTooltip from './InfoTooltip';
 
 function Login({ handleLogin }) {
   const navigate = useNavigate();
@@ -96,7 +96,7 @@ function Login({ handleLogin }) {
           required
         />
       </Signs>
-      <InfoTooltipo
+      <InfoTooltip
         isSuccess={successRegister}
         shoulBeInfoOpen={shoulBeInfoOpen}
         onCloseBtn={onCloseInfoTool}

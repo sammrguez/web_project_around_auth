@@ -54,7 +54,7 @@ function App() {
 
   useEffect(() => {
     if (localStorage.getItem('token')) {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('jwt');
       auth
         .getToken(token)
         .then((data) => {
