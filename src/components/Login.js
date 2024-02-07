@@ -37,7 +37,6 @@ function Login({ handleLogin }) {
   }
   function handleSubmit(evt) {
     evt.preventDefault();
-    console.log(userCredentials);
 
     if (!userCredentials.email || !userCredentials.password) {
       return;
@@ -45,7 +44,6 @@ function Login({ handleLogin }) {
     auth
       .authorize(userCredentials.email, userCredentials.password)
       .then((data) => {
-        console.log(data);
         if (data.token) {
           setuserCredentials({
             email: '',

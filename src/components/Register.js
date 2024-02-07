@@ -26,12 +26,11 @@ function Register() {
       ...userCredentials,
       [name]: value,
     });
-    console.log(userCredentials);
   }
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    console.log(userCredentials);
+
     auth
       .register(userCredentials.email, userCredentials.password)
       .then((data) => {
@@ -43,7 +42,6 @@ function Register() {
           setsuccessRegister(false);
         }
       });
-    console.log(userCredentials);
   }
 
   return (
