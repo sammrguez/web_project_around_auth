@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/web_project_around_auth/static/css/main.4f7ace36.css",
-    "main.js": "/web_project_around_auth/static/js/main.dc0d68f9.js",
-    "static/js/787.7420afd0.chunk.js": "/web_project_around_auth/static/js/787.7420afd0.chunk.js",
-    "static/media/Inter-Regular.woff": "/web_project_around_auth/static/media/Inter-Regular.8c206db99195777c6769.woff",
-    "static/media/logo-vector.svg": "/web_project_around_auth/static/media/logo-vector.66cff89119b58975ea644f9d7f47a8c5.svg",
-    "static/media/like_desactivado.svg": "/web_project_around_auth/static/media/like_desactivado.99043841e8bec6b9df21.svg",
-    "static/media/Trash_hover.svg": "/web_project_around_auth/static/media/Trash_hover.70d1e4add1f3faeb7897.svg",
-    "index.html": "/web_project_around_auth/index.html",
-    "static/media/Trash-icon.svg": "/web_project_around_auth/static/media/Trash-icon.ba43124316072f7a8629.svg",
-    "static/media/error_message.svg": "/web_project_around_auth/static/media/error_message.d4ce2a261b68c6da973d51ef98afae1a.svg",
-    "static/media/success_message.svg": "/web_project_around_auth/static/media/success_message.a9eb6caf1da3ff48b215fb1dd9477d74.svg",
-    "static/media/like_activo.svg": "/web_project_around_auth/static/media/like_activo.f8482d28867cec189b08.svg",
-    "static/media/Close-Icon.svg": "/web_project_around_auth/static/media/Close-Icon.84ad06bffd7a731abfff.svg",
-    "static/media/edit-avatar.svg": "/web_project_around_auth/static/media/edit-avatar.ae1a976ddb506239e9f0.svg",
-    "static/media/add_button.svg": "/web_project_around_auth/static/media/add_button.bed8c136e13907f5eefb86d62a5fe29e.svg",
-    "main.4f7ace36.css.map": "/web_project_around_auth/static/css/main.4f7ace36.css.map",
-    "main.dc0d68f9.js.map": "/web_project_around_auth/static/js/main.dc0d68f9.js.map",
-    "787.7420afd0.chunk.js.map": "/web_project_around_auth/static/js/787.7420afd0.chunk.js.map"
+    "main.css": "//github.com/sammrguez/web_project_around_auth.git/static/css/main.245e24c3.css",
+    "main.js": "//github.com/sammrguez/web_project_around_auth.git/static/js/main.9e8ac26d.js",
+    "static/js/787.7420afd0.chunk.js": "//github.com/sammrguez/web_project_around_auth.git/static/js/787.7420afd0.chunk.js",
+    "static/media/Inter-Regular.woff": "//github.com/sammrguez/web_project_around_auth.git/static/media/Inter-Regular.8c206db99195777c6769.woff",
+    "static/media/logo-vector.svg": "//github.com/sammrguez/web_project_around_auth.git/static/media/logo-vector.66cff89119b58975ea644f9d7f47a8c5.svg",
+    "static/media/like_desactivado.svg": "//github.com/sammrguez/web_project_around_auth.git/static/media/like_desactivado.99043841e8bec6b9df21.svg",
+    "index.html": "//github.com/sammrguez/web_project_around_auth.git/index.html",
+    "static/media/Trash_hover.svg": "//github.com/sammrguez/web_project_around_auth.git/static/media/Trash_hover.70d1e4add1f3faeb7897.svg",
+    "static/media/Trash-icon.svg": "//github.com/sammrguez/web_project_around_auth.git/static/media/Trash-icon.ba43124316072f7a8629.svg",
+    "static/media/error_message.svg": "//github.com/sammrguez/web_project_around_auth.git/static/media/error_message.d4ce2a261b68c6da973d51ef98afae1a.svg",
+    "static/media/success_message.svg": "//github.com/sammrguez/web_project_around_auth.git/static/media/success_message.a9eb6caf1da3ff48b215fb1dd9477d74.svg",
+    "static/media/like_activo.svg": "//github.com/sammrguez/web_project_around_auth.git/static/media/like_activo.f8482d28867cec189b08.svg",
+    "static/media/Close-Icon.svg": "//github.com/sammrguez/web_project_around_auth.git/static/media/Close-Icon.84ad06bffd7a731abfff.svg",
+    "static/media/edit-avatar.svg": "//github.com/sammrguez/web_project_around_auth.git/static/media/edit-avatar.ae1a976ddb506239e9f0.svg",
+    "static/media/add_button.svg": "//github.com/sammrguez/web_project_around_auth.git/static/media/add_button.bed8c136e13907f5eefb86d62a5fe29e.svg",
+    "main.245e24c3.css.map": "//github.com/sammrguez/web_project_around_auth.git/static/css/main.245e24c3.css.map",
+    "main.9e8ac26d.js.map": "//github.com/sammrguez/web_project_around_auth.git/static/js/main.9e8ac26d.js.map",
+    "787.7420afd0.chunk.js.map": "//github.com/sammrguez/web_project_around_auth.git/static/js/787.7420afd0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4f7ace36.css",
-    "static/js/main.dc0d68f9.js"
+    "static/css/main.245e24c3.css",
+    "static/js/main.9e8ac26d.js"
   ]
 }
