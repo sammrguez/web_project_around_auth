@@ -53,7 +53,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (localStorage.getItem('token')) {
+    if (localStorage.getItem('jwt')) {
       const token = localStorage.getItem('jwt');
       auth
         .getToken(token)
@@ -64,13 +64,13 @@ function App() {
 
             navigate('/');
           } else {
-            navigate('/signin');
+            navigate('/signup');
             throw new Error('Token inválido');
           }
         })
         .catch((err) => {
           console.log(err);
-          navigate('/signin');
+          navigate('/signup');
         });
     }
   }, [loggedIn, navigate]);

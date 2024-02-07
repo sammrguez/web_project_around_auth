@@ -3,8 +3,7 @@ import Header from './Header';
 import Signs from './Signs';
 import { Link, useNavigate } from 'react-router-dom';
 import * as auth from '../utils/auth';
-
-import InfoTooltip from './InfoTooltip';
+import InfoTooltip from '../components/InfoTooltip';
 
 function Register() {
   const navigate = useNavigate();
@@ -15,7 +14,6 @@ function Register() {
   });
 
   const [successRegister, setsuccessRegister] = useState(false);
-
   const [shoulBeInfoOpen, setShoulBeInfoOpen] = useState(false);
 
   function onCloseInfoTool() {
@@ -33,9 +31,11 @@ function Register() {
 
   function handleSubmit(evt) {
     evt.preventDefault();
+    console.log(userCredentials);
     auth
       .register(userCredentials.email, userCredentials.password)
       .then((data) => {
+        console.log(data);
         if (data) {
           navigate('../signin', { state: 'success' });
         } else {

@@ -7,16 +7,15 @@ import InfoTooltip from './InfoTooltip';
 
 function Login({ handleLogin }) {
   const navigate = useNavigate();
+  const location = useLocation();
+
   const [userCredentials, setuserCredentials] = useState({
     email: '',
     password: '',
   });
 
   const [successRegister, setsuccessRegister] = useState(false);
-
   const [shoulBeInfoOpen, setShoulBeInfoOpen] = useState(false);
-
-  const location = useLocation();
 
   function onCloseInfoTool() {
     setShoulBeInfoOpen(false);
@@ -38,13 +37,14 @@ function Login({ handleLogin }) {
   }
   function handleSubmit(evt) {
     evt.preventDefault();
-
+    console.log(userCredentials);
     if (!userCredentials.email || !userCredentials.password) {
       return;
     }
     auth
       .authorize(userCredentials.email, userCredentials.password)
       .then((data) => {
+        console.log(data);
         if (data.token) {
           setuserCredentials({
             email: '',

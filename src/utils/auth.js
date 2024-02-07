@@ -1,28 +1,33 @@
-export const BASE_URL = 'https://register.nomoreparties.co';
+const BASE_URL = 'https://register.nomoreparties.co';
 
 export const register = (email, password) => {
-  console.log(`enviado desde auth ${email} y ${password}`);
+  console.log(`desde auth ${email} ${password}`);
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ email, password }),
+
+    body: JSON.stringify({
+      email,
+      password,
+    }),
   })
     .then((res) => {
+      console.log(res);
       if (res.ok) {
         return res.json();
       }
       return Promise.reject(res.status);
     })
-
     .catch((error) => {
       console.log(`Error: ${error}`);
     });
 };
 
 export const authorize = (email, password) => {
+  console.log(`desde auth auth ${email} y ${password}`);
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
     headers: {
@@ -31,17 +36,19 @@ export const authorize = (email, password) => {
     },
     body: JSON.stringify({ email, password }),
   })
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.token) {
-        localStorage.setItem('jwt', data.token);
-        return data;
-      } else {
-        return;
+    .then((res) => {
+      console.log(res);
+      if (!res.ok) {
+        throw new Error(`Error al registrarse: ${res.status}`);
       }
+
+      return res.json();
+    })
+    .then((data) => {
+      return data;
     })
     .catch((err) => {
-      return err;
+      throw new Error(`Error en la solicitud de registro: ${err.message}`);
     });
 };
 
