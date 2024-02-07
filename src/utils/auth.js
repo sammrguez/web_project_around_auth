@@ -7,7 +7,6 @@ export const register = (email, password) => {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-
     body: JSON.stringify({
       email,
       password,
@@ -46,7 +45,9 @@ export const authorize = (email, password) => {
       }
     })
 
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      return err;
+    });
 };
 
 export const getToken = (token) => {
